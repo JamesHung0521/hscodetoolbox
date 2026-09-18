@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HS Code Lookup &amp; Duty Rates (US / China / EU) — HS Code Toolbox</title>
+<meta name="description" content="Search HS codes by number or English/Chinese product name. Compare import duty rates for the USA, China and the EU side by side. Free, no sign-up.">
+<link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .tool-hero{ padding:34px 0 20px; }
+  .tool-layout{ display:grid; grid-template-columns: 1fr; gap:20px; }
+  .result-state{padding:28px;border:1px dashed var(--line);border-radius:var(--radius);color:var(--ink-500);text-align:center;}
+  .duty-table{width:100%;border-collapse:collapse;font-size:.92rem;}
+  .duty-table th,.duty-table td{padding:11px 12px;border:1px solid var(--line);text-align:left;vertical-align:top;}
+  .duty-table thead th{background:var(--bg-soft);font-weight:700;}
+  .duty-table .flag{font-size:.9rem;}
+  .code-num{font-family:var(--mono);font-weight:700;font-size:1.25rem;color:var(--blue-700);}
+  .snippet{display:inline-block;margin-top:6px;font-size:.88rem;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .chip{background:var(--bg-soft);border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:.82rem;color:var(--ink-700);cursor:pointer;user-select:none;}
+  .chip:hover{background:var(--bg-blue);border-color:var(--blue-500);}
+  .disclaimer{margin-top:16px;padding:12px 14px;background:var(--warn-bg);border-left:4px solid var(--warn);border-radius:4px;font-size:.85rem;color:#7a5a16;}
+  .history-box{max-height:220px;overflow:auto;}
+  .history-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line);font-size:.9rem;}
+  .history-item:last-child{border-bottom:none;}
+  .like-actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/logo_hscodetoolbox.jpg" alt="HS Code Toolbox logo"><span><span class="hl">hscode</span><span class="hl2">toolbox</span></span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="hs-code-lookup.html" class="active">HS Code Lookup</a>
+      <a href="container-calculation.html">Container Load</a>
+      <a href="guides.html">Guides</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="btn btn-primary" href="container-calculation.html">Container Calculator</a>
+  </div>
+</header>
+
+<main>
+  <section class="tool-hero">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:20px;">
+        <span class="eyebrow">HS Code Lookup</span>
+        <h1>Find the HS code &amp; compare duty rates</h1>
+        <p class="muted" style="max-width:620px;margin:0 auto;">Search by <strong>HS code</strong> or <strong>product name</strong> (English or 中文). Compare import duty across the <strong>USA</strong>, <strong>China</strong> and <strong>EU</strong> side by side.</p>
+      </div>
+
+      <form class="search-bar" style="max-width:720px;margin:0 auto;" onsubmit="event.preventDefault(); doSearch();">
+        <input id="q" class="input" type="text" placeholder="Enter a code (e.g. 3907, 6403) or product (PVC resin, 螺丝, shoes, 咖啡)…" aria-label="Search HS code or product">
+        <button class="btn btn-primary btn-lg" type="submit">Search</button>
+        <button class="btn btn-ghost btn-lg" type="button" aria-label="Clear search" onclick="clearSearch()">Clear</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:8px;">
+    <div class="wrap">
+      <div class="tool-layout">
+        <!-- 结果区 -->
+        <div id="resultArea">
+          <div class="result-state" id="emptyState">
+            <span style="font-size:1.6rem;display:block;margin-bottom:8px;">🔍</span>
+            Start typing above or pick a popular product below to see HS codes and duty rates.
+          </div>
+        </div>
+
+        <!-- 常用快速入口 -->
+        <div id="quickStart" style="margin-top:6px;">
+          <span class="eyebrow">Popular lookups</span>
+          <div class="chips" id="chips"></div>
+        </div>
+
+        <!-- 历史查询 -->
+        <section id="historySec" style="display:none;margin-top:6px;">
+          <span class="eyebrow">Recent searches</span>
+          <div class="card history-box" id="historyBox"></div>
+        </section>
+
+        <p class="disclaimer">
+          ⚠️ <strong>For reference only.</strong> Duty rates depend on your specific country of origin, trade agreements and HS interpretation by customs authorities. Always confirm the final code and applicable rate with your customs broker or the official tariff of the destination country before shipping. Data shown is a demonstration sample.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo_hscodetoolbox.jpg" alt="HS Code Toolbox logo" style="margin-bottom:10px;">
+        <p>Free, practical tools for exporters and importers — stripped of the jargon.</p>
+      </div>
+      <div><h4>Tools</h4><a href="hs-code-lookup.html">HS Code Lookup</a><a href="container-calculation.html">Container Loading Calculator</a></div>
+      <div><h4>Resources</h4><a href="guides.html">Knowledge Base</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="cookie.html">Cookie Policy</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> hscodetoolbox.com. Tools are provided for reference only.</span></div>
+  </div>
+</footer>
+
+<script src="assets/js/hsdata.js"></script>
+<script>
+(function(){
+  'use strict';
+  var qEl=document.getElementById('q');
+  var resultArea=document.getElementById('resultArea');
+
+  try{document.getElementById('year').textContent=new Date().getFullYear();}catch(e){}
+
+  /* ---------- 搜索 ---------- */
+  function doSearch(){
+    var raw=(qEl.value||'').trim();
+    showQuery(raw);
+    if(!raw){ showEmpty('Please enter an HS code or a product name.'); saveHistory(''); return; }
+    var results=lookup(raw);
+    if(results.length===0){ showEmpty('No match found for "'+raw+'". Try a different spelling or a shorter code range (e.g. 3907 or "plastic").'); return; }
+    renderResults(results,raw);
+    saveHistory(raw);
+  }
+  function clearSearch(){ qEl.value=''; showEmpty('Start typing above or pick a product below.'); }
+  function showQuery(raw){ var el=document.getElementById('queryNote'); if(el) el.textContent=raw; }
+
+  /* ---------- 数据匹配 ---------- */
+  function norm(s){ return String(s||'').toLowerCase().replace(/[\s\-\.\/]+/g,''); }
+  function lookup(raw){
+    var n=norm(raw); var out=[]; var seen={};
+    var byAlias=[];
+    if(/\d/.test(raw)){
+      HS_DATA.forEach(function(d){
+        var cn=String(norm(d.code6)).replace(/^0+/,'');
+        var nn=n.replace(/^0+/,'');
+        var hit = cn.indexOf(nn)===0 || nn.indexOf(cn)===0 || norm(d.code6).indexOf(n)===0;
+        if(hit){ if(!seen[d.code6]){seen[d.code6]=1;out.push(d);} }
+      });
+      // 精确6位优先; 其次短码(章/品目)优先, 使"9"优先匹配0901咖啡而非9字头长码
+      out.sort(function(a,b){
+        var ea=norm(a.code6).replace(/^0+/,'')===n.replace(/^0+/,'')?0:1;
+        var eb=norm(b.code6).replace(/^0+/,'')===n.replace(/^0+/,'')?0:1;
+        if(ea!==eb) return ea-eb;
+        return norm(a.code6).length - norm(b.code6).length;
+      });
+    }
+    if(!out.length){
+      HS_ALIAS.forEach(function(al){
+        var hit=al.kw.some(function(k){ return n.indexOf(norm(k))>-1 || raw.toLowerCase().indexOf(k.toLowerCase())>-1; });
+        if(hit){ var d=HS_DATA.filter(function(x){return x.code6===al.code;})[0]; if(d && !seen[d.code6]){seen[d.code6]=1;out.push(d);} }
+      });
+    }
+    // 中英文品名匹配
+    if(!out.length){
+      HS_DATA.forEach(function(d){
+        var hitEn=d.name.toLowerCase().indexOf(raw.toLowerCase())>-1;
+        var hitCn=d.cnName && d.cnName.indexOf(raw)>-1;
+        if(hitEn||hitCn){ if(!seen[d.code6]){seen[d.code6]=1;out.push(d);} }
+      });
+    }
+    return out;
+  }
+
+  /* ---------- 渲染 ---------- */
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function renderResults(results,raw){
+    if(!results.length){ return; }
+    var html='<div class="card">';
+    results.forEach(function(d){
+      html+='<h2 style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">'
+        +'<span class="code-num">'+esc(d.code6)+'</span>'
+        +(raw&&norm(raw)===norm(d.code6)?'<span class="tag green">exact</span>':'<span class="tag gray">'+esc(d.code6.slice(0,2))+'</span>')
+        +'</h2>';
+      html+='<p style="margin:2px 0 14px;"><strong>'+esc(d.name)+'</strong>'+(d.cnName?'<br><span class="muted snippet">'+esc(d.cnName)+'</span>':'')+'</p>';
+      html+='<table class="duty-table"><caption style="text-align:left;font-weight:700;margin-bottom:8px;">Import duty by market</caption><thead><tr><th scope="col">Market</th><th scope="col">Code</th><th scope="col">Duty / Rate</th></tr></thead><tbody>';
+      html+='<tr><td class="flag">🇺🇸 USA</td><td><span class="code-num" style="font-size:1rem;">'+esc(d.us.code)+'</span></td><td>'+esc(d.us.duty)+'</td></tr>';
+      html+='<tr><td class="flag">🇨🇳 China</td><td><span class="code-num" style="font-size:1rem;">'+esc(d.cn.code)+'</span></td><td>'+esc(d.cn.duty)+'</td></tr>';
+      html+='<tr><td class="flag">🇪🇺 EU (TARIC)</td><td><span class="code-num" style="font-size:1rem;">'+esc(d.eu.code)+'</span></td><td>'+esc(d.eu.duty)+'</td></tr>';
+      html+='</tbody></table>';
+      html+='<div class="like-actions">'
+        +'<button class="btn btn-ghost" type="button" onclick="copyCode(\''+esc(d.code6)+'\')">Copy '+esc(d.code6)+'</button>'
+        +'<span class="muted" style="align-self:center;font-size:.85rem;">Note: '+esc(d.code6).slice(0,2)+' = Chapter (HS Section I–XXI)</span>'
+        +'</div>';
+    });
+    html+='</div>';
+    resultArea.innerHTML=html;
+  }
+  function showEmpty(msg){
+    resultArea.innerHTML='<div class="result-state"><span style="font-size:1.6rem;display:block;margin-bottom:8px;">🔍</span>'+esc(msg)+'</div>';
+  }
+
+  /* ---------- 复制 ---------- */
+  window.copyCode=function(c){
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(c); }
+      else{ var t=document.createElement('textarea');t.value=c;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t); }
+    }catch(e){}
+  };
+
+  /* ---------- 历史记录(localStorage) ---------- */
+  var KEY='hscb_history';
+  function getHist(){ try{ return JSON.parse(localStorage.getItem(KEY))||[]; }catch(e){ return []; } }
+  function setHist(a){ try{ localStorage.setItem(KEY,JSON.stringify(a)); }catch(e){} }
+  function saveHistory(q){
+    var h=getHist();
+    if(!q) return;
+    h=h.filter(function(x){return x!==q;});
+    h.unshift(q);
+    h=h.slice(0,8);
+    setHist(h);
+    renderHistory(h);
+  }
+  function renderHistory(h){
+    var sec=document.getElementById('historySec'), box=document.getElementById('historyBox');
+    h=h||getHist();
+    if(!h.length){ sec.style.display='none'; return; }
+    sec.style.display='';
+    box.innerHTML=h.map(function(it,i){
+      return '<div class="history-item"><button class="btn-ghost" style="border:none;background:transparent;padding:0;color:var(--blue-600);font-weight:600;" onclick="reRun(\''+esc(it)+'\')">'+esc(it)+'</button>'
+        +'<button aria-label="Remove" style="border:none;background:transparent;color:var(--ink-300);cursor:pointer;" onclick="removeHist('+i+')">✕</button></div>';
+    }).join('');
+  }
+  window.reRun=function(v){ qEl.value=v; doSearch(); };
+  window.removeHist=function(i){ var h=getHist(); h.splice(i,1); setHist(h); renderHistory(h); };
+
+  /* ---------- 快速入口 chips ---------- */
+  (function buildChips(){
+    var pops=['3907','6403','6110','4819','4415','8518','9503','0901','纸张/Paper','鞋/Shoes'];
+    document.getElementById('chips').innerHTML=pops.map(function(p){
+      return '<span class="chip" onclick="chipGo(\''+esc(p)+'\')">'+esc(p)+'</span>';
+    }).join('');
+  })();
+  window.chipGo=function(v){ qEl.value=v; doSearch(); };
+
+  /* ---------- 初始URL参数 ---------- */
+  (function initUrl(){
+    var m=location.href.match(/[?&]q=([^&]+)/);
+    if(m){ qEl.value=decodeURIComponent(m[1]).replace(/\+/g,' '); doSearch(); }
+    renderHistory(getHist());
+  })();
+})();
+</script>
+</body>
+</html>

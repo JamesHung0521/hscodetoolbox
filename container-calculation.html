@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Container Loading Calculator — How Many Cartons Fit a 20ft / 40ft / 40HC — HS Code Toolbox</title>
+<meta name="description" content="Enter your cartons, pallets or bulk bags and see how many fit a 20ft, 40ft or 40HC container. Real-time volume & weight check, loading rate, and a 2D layout view. Free.">
+<link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .tool-layout{display:grid;grid-template-columns:340px 1fr;gap:22px;align-items:start;}
+  .panel{position:sticky;top:82px;}
+  .panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+  .unit-row{display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap;}
+  .unit-pill{border:1.5px solid var(--line);border-radius:20px;padding:4px 12px;font-size:.82rem;background:#fff;cursor:pointer;}
+  .unit-pill.active{background:var(--blue-600);color:#fff;border-color:var(--blue-600);}
+  .item-row{border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-bottom:12px;background:#fff;position:relative;}
+  .item-row .del{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--ink-300);cursor:pointer;font-size:1.1rem;}
+  .item-row .del:hover{color:var(--danger);}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .mini-label{font-size:.75rem;color:var(--ink-500);font-weight:600;}
+  .stack-toggle{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:.85rem;}
+  .add-btn{width:100%;border:1.5px dashed var(--line);background:none;border-radius:var(--radius);padding:12px;color:var(--blue-600);font-weight:700;cursor:pointer;}
+  .add-btn:hover{border-color:var(--blue-500);background:var(--bg-blue);}
+  .container-opts{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+  .copt{flex:1;min-width:70px;border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:10px;text-align:center;cursor:pointer;background:#fff;font-weight:700;}
+  .copt.active{border-color:var(--blue-600);background:var(--blue-50);color:var(--blue-700);}
+  .copt small{display:block;font-weight:400;color:var(--ink-500);font-size:.75rem;}
+
+  /* 结果 */
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:18px;}
+  .kpi .card{padding:16px;text-align:center;}
+  .kpi .num{font-size:1.6rem;font-weight:800;color:var(--blue-700);}
+  .kpi .lab{font-size:.8rem;color:var(--ink-500);}
+  .bar{height:10px;background:var(--bg-soft);border-radius:20px;overflow:hidden;margin-top:6px;}
+  .bar>i{display:block;height:100%;border-radius:20px;}
+  .b-blue{background:var(--blue-500);} .b-green{background:var(--green-500);}
+  .b-warn{background:var(--warn);} .b-danger{background:var(--danger);}
+  .warn-banner{padding:12px 14px;border-radius:var(--radius-sm);margin:12px 0;font-weight:600;}
+  .warn-danger{background:var(--danger-bg);color:var(--danger);border-left:4px solid var(--danger);}
+  .warn-warn{background:var(--warn-bg);color:#7a5a16;border-left:4px solid var(--warn);}
+  .compare-table{width:100%;border-collapse:collapse;font-size:.9rem;}
+  .compare-table th,.compare-table td{padding:9px 10px;border:1px solid var(--line);text-align:center;}
+  .compare-table thead th{background:var(--bg-soft);}
+  .compare-table td:first-child{text-align:left;font-weight:600;}
+  .best{background:var(--green-50);}
+  .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px;margin-bottom:10px;}
+  .legend .li{display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--ink-700);}
+  .legend .sw{width:14px;height:14px;border-radius:3px;display:inline-block;}
+  .views3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:6px;}
+  .view-box{border:1px solid var(--line);border-radius:var(--radius);padding:12px;background:#fff;}
+  .view-box h4{margin:0 0 8px;font-size:.9rem;text-align:center;}
+  .view-svg{width:100%;height:auto;display:block;}
+  .result-empty{color:var(--ink-500);text-align:center;padding:40px;border:1px dashed var(--line);border-radius:var(--radius);}
+  @media(max-width:920px){ .tool-layout{grid-template-columns:1fr;} .panel{position:static;} }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/logo_hscodetoolbox.jpg" alt="HS Code Toolbox logo"><span><span class="hl">hscode</span><span class="hl2">toolbox</span></span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="hs-code-lookup.html">HS Code Lookup</a>
+      <a href="container-calculation.html" class="active">Container Load</a>
+      <a href="guides.html">Guides</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="btn btn-primary" href="hs-code-lookup.html">HS Code Lookup</a>
+  </div>
+</header>
+
+<main>
+  <section style="padding:30px 0 8px;">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:18px;">
+        <span class="eyebrow">Container Loading Calculator</span>
+        <h1>How many cartons fit in a container?</h1>
+        <p class="muted" style="max-width:660px;margin:0 auto;">Add your packages (cartons, bags, bulk bags or pallets), pick a container — or let us auto-select — and get real-time volume &amp; weight results with a 2D layout view.</p>
+      </div>
+
+      <div class="tool-layout">
+        <!-- 左侧输入面板 -->
+        <div class="card panel">
+          <div class="panel-head">
+            <h3 style="margin:0;">Your cargo</h3>
+            <button class="btn btn-ghost" style="padding:6px 12px;font-size:.82rem;" type="button" onclick="engine.resetAll()">Reset</button>
+          </div>
+
+          <div class="unit-row">
+            <span style="font-size:.85rem;font-weight:600;">Units:</span>
+            <button class="unit-pill" data-unit="mm" onclick="engine.setUnit('mm')">mm / kg</button>
+            <button class="unit-pill" data-unit="cm" onclick="engine.setUnit('cm')">cm / kg</button>
+            <button class="unit-pill" data-unit="ft" onclick="engine.setUnit('ft')">ft·in / lb</button>
+          </div>
+
+          <div id="itemList"></div>
+          <button class="add-btn" type="button" onclick="engine.addItem()">+ Add package</button>
+
+          <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line);">
+            <label class="field" style="margin-bottom:8px;"><span style="font-weight:700;">Container type</span></label>
+            <div class="container-opts" id="containerOpts"></div>
+            <label class="stack-toggle" style="margin-bottom:14px;">
+              <input type="checkbox" id="autoSelect" onchange="engine.toggleAuto()">
+              <span><strong>Auto-select</strong> best container</span>
+            </label>
+            <button class="btn btn-primary btn-block" type="button" onclick="engine.calculate()">Calculate Loading</button>
+          </div>
+        </div>
+
+        <!-- 右侧结果 -->
+        <div>
+          <div id="resultArea">
+            <div class="result-empty">
+              <span style="font-size:1.8rem;display:block;margin-bottom:8px;">📦</span>
+              Add your packages and container type, then press <strong>Calculate Loading</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand"><img src="assets/logo_hscodetoolbox.jpg" alt="HS Code Toolbox logo" style="margin-bottom:10px;"><p>Free, practical tools for exporters and importers.</p></div>
+      <div><h4>Tools</h4><a href="hs-code-lookup.html">HS Code Lookup</a><a href="container-calculation.html">Container Loading Calculator</a></div>
+      <div><h4>Resources</h4><a href="guides.html">Knowledge Base</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="cookie.html">Cookie Policy</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> hscodetoolbox.com. Loading estimates are for reference only.</span></div>
+  </div>
+</footer>
+
+<script src="assets/js/container-engine.js"></script>
+<script>
+(function(){
+  'use strict';
+  var C=window.ContainerEngine;
+  var unit='mm';
+  var items=[];
+  var selectedContainer="40'";
+  var autoSelectOn=false;
+  var uid=1;
+
+  /* ---------- 单位换算基准(mm时直接输入mm; cm乘10; ft显示成英寸? 简化: 输入英寸/磅) ---------- */
+  var toMM={ mm:function(v){return +v;}, cm:function(v){return +v*10;}, ft:function(v){return +v*25.4;} };
+  var fromMM={ mm:function(v){return v;}, cm:function(v){return +(v/10).toFixed(1);}, ft:function(v){return +(v/25.4).toFixed(1);} };
+  var wtToKg={ kg:function(v){return +v;}, lb:function(v){return +v*0.45359237;} };
+  var wtFromKg={ kg:function(v){return +v.toFixed(2);}, lb:function(v){return +(v/0.45359237).toFixed(1);} };
+  function curUnitDim(){ return unit; } // 尺寸显示单位
+
+  /* ---------- 构造默认(用mm和kg标注, 显示换算) ---------- */
+  function newItem(){
+    uid++;
+    return {uid:'u'+uid, name:'Package '+(items.length+1), type:'carton', l:500, w:400, h:300, wt:25, quantity:1000, stackable:false, stackLayers:0};
+  }
+
+  function renderList(){
+    var el=document.getElementById('itemList');
+    el.innerHTML=items.map(function(it,idx){
+      var dimU=curUnitDim();
+      var fc=dimU==='ft' ? '' : dimU;
+      var wtu=dimU==='ft' ? 'lb' : 'kg';
+      return '<div class="item-row">'
+        +'<button class="del" type="button" aria-label="Remove package" onclick="engine.delItem('+idx+')">✕</button>'
+        +'<div class="grid2" style="margin-bottom:10px;">'
+        +'  <div class="field" style="margin:0;"><label class="mini-label">Name</label><input class="input" value="'+esc(it.name)+'" oninput="engine.edit('+idx+',\'name\',this.value)"></div>'
+        +'  <div class="field" style="margin:0;"><label class="mini-label">Type</label><select class="input" onchange="engine.edit('+idx+',\'type\',this.value)">'
+        +'    <option value="carton"'+(it.type==='carton'?' selected':'')+'>Carton box</option>'
+        +'    <option value="bag"'+(it.type==='bag'?' selected':'')+'>Bag</option>'
+        +'    <option value="bulkbag"'+(it.type==='bulkbag'?' selected':'')+'>Bulk bag</option>'
+        +'    <option value="pallet"'+(it.type==='pallet'?' selected':'')+'>Pallet</option>'
+        +'  </select></div>'
+        +'</div>'
+        +'<div class="grid3" style="margin-bottom:10px;">'
+        +'  <div class="field" style="margin:0;"><label class="mini-label">Length ('+fc+')</label><input type="number" min="0" class="input" value="'+fromMM[dimU](it.l)+'" oninput="engine.editDim('+idx+',\'l\',this.value)"></div>'
+        +'  <div class="field" style="margin:0;"><label class="mini-label">Width ('+fc+')</label><input type="number" min="0" class="input" value="'+fromMM[dimU](it.w)+'" oninput="engine.editDim('+idx+',\'w\',this.value)"></div>'
+        +'  <div class="field" style="margin:0;"><label class="mini-label">Height ('+fc+')</label><input type="number" min="0" class="input" value="'+fromMM[dimU](it.h)+'" oninput="engine.editDim('+idx+',\'h\',this.value)"></div>'
+        +'</div>'
+        +'<div class="grid2" style="margin-bottom:10px;">'
+        +'  <div class="field" style="margin:0;"><label class="mini-label">Weight ('+wtu+'/unit)</label><input type="number" min="0" class="input" value="'+wtFromKg[unit==='ft'?'lb':'kg'](it.wt)+'" oninput="engine.editWt('+idx+',this.value)"></div>'
+        +'  <div class="field" style="margin:0;"><label class="mini-label">Quantity</label><input type="number" min="0" step="1" class="input" value="'+it.quantity+'" oninput="engine.edit('+idx+',\'quantity\',this.value)"></div>'
+        +'</div>'
+        +(it.type==='pallet' ? '<div class="stack-toggle"><input type="checkbox" '+(it.stackable?'checked':'')+' onchange="engine.edit('+idx+',\'stackable\',this.checked)"><span>Allow pallets to stack</span></div>' : '')
+        +'</div>';
+    }).join('');
+  }
+
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  /* ---------- 柜型选项 ---------- */
+  function renderContainers(){
+    var el=document.getElementById('containerOpts');
+    el.innerHTML=Object.keys(C.CONTAINERS).map(function(t){
+      var c=C.CONTAINERS[t];
+      return '<div class="copt'+(selectedContainer===t?' active':'')+'" onclick="engine.pickContainer(\''+t+'\')">'+t+'<small>'+c.cbm+' m³ · '+Math.round(c.maxWt)+' kg</small></div>';
+    }).join('');
+  }
+
+  /* ---------- 计算 ---------- */
+  function calculate(){
+    // 转成引擎输入
+    var inputs=items.map(function(it){
+      var l=+it.l, w=+it.w, h=+it.h;
+      // 托盘: 若可堆叠且指定层数, 高度乘层数(默认算一层)
+      var effH=h;
+      if(it.type==='pallet' && it.stackable){ effH=h*(it.stackLayers||1); }
+      return {uid:it.uid, name:it.name, type:it.type, l:l, w:w, h:effH, wt:it.wt, quantity:Math.max(0,Math.floor(+it.quantity)||0)};
+    }).filter(function(x){return x.quantity>0;});
+
+    if(!inputs.length){ showResult('<div class="result-empty">Add at least one package with a quantity &gt; 0.</div>'); return; }
+
+    // 行业校验: 超高/超重提示
+    var warnings=[];
+    var c=C.CONTAINERS[selectedContainer];
+    inputs.forEach(function(it){
+      var maxD=Math.max(it.l,it.w,it.h);
+      if(it.h>c.innerH){ warnings.push({level:'danger',msg:it.name+': height '+it.h+'mm exceeds container inner height '+c.innerH+'mm — cannot fit upright.'}); }
+      if(maxD>c.innerL){ warnings.push({level:'warn',msg:it.name+': longest side '+maxD+'mm exceeds container length — may not load lengthwise.'}); }
+    });
+
+    var best, result;
+    if(autoSelectOn){
+      var sel=C.autoSelect(inputs);
+      if(sel){ best=sel; selectedContainer=sel.type; renderContainers(); result=sel.result; }
+      else{ best=null; }
+    } else {
+      result=C.pack(inputs, selectedContainer);
+      best={type:selectedContainer, count:result.containers.length, result:result};
+    }
+    if(!result || !result.containers || !result.containers.length){ showResult('<div class="result-empty">Could not fit the given packages into a '+esc(selectedContainer)+'. Try a smaller/larger container or check dimensions.</div>'); return; }
+
+    renderResult(result, warnings, best);
+  }
+
+  function renderResult(result, warnings, best){
+    var c=C.CONTAINERS[selectedContainer];
+    var html='';
+
+    // 警告
+    warnings.forEach(function(w){
+      html+='<div class="warn-banner warn-'+(w.level==='danger'?'danger':'warn')+'">'+esc(w.msg)+'</div>';
+    });
+    // 超重总检查
+    if(result.totalWt > c.maxWt){
+      html+='<div class="warn-banner warn-danger">⚠️ Total weight '+Math.round(result.totalWt).toLocaleString()+' kg exceeds container max payload '+c.maxWt.toLocaleString()+' kg → <strong>overweight</strong>.</div>';
+    }
+
+    // KPI
+    html+='<div class="kpi">';
+    html+='  <div class="card"><div class="num">'+best.count+'</div><div class="lab">Containers ('+esc(selectedContainer)+')</div></div>';
+    html+='  <div class="card"><div class="num">'+result.totalCbm.toFixed(1)+' m³</div><div class="lab">Total volume</div></div>';
+    html+='  <div class="card"><div class="num">'+Math.round(result.totalWt).toLocaleString()+' kg</div><div class="lab">Total weight</div></div>';
+    html+='  <div class="card"><div class="num">'+result.totalCount.toLocaleString()+'</div><div class="lab">Total packages</div></div>';
+    html+='</div>';
+
+    // 瓶颈提示
+    var volCnt=Math.ceil(result.totalCbm/c.cbm);
+    var wtCnt=Math.ceil(result.totalWt/c.maxWt);
+    var bottleneck=volCnt>=wtCnt?'volume':'weight';
+    html+='<div class="warn-banner warn-warn">🧭 <strong>Bottleneck:</strong> Your load hits the <strong>'+bottleneck+'</strong> limit first '+(bottleneck==='volume'?('(volume '+result.totalCbm.toFixed(1)+' m³ ≈ '+volCnt+' × '+esc(selectedContainer)+')'):('(weight '+Math.round(result.totalWt).toLocaleString()+' kg ≈ '+wtCnt+' × max payload)'))+'. Optimize '+(bottleneck==='volume'?'package dimensions':'packaging weight')+' to improve utilization.</div>';
+
+    // 每柜明细
+    html+='<h2 style="margin-top:20px;">Breakdown per container</h2>';
+    result.containers.forEach(function(cont,ci){
+      var fc=cont.utilCbm*100, fw=cont.utilWt*100;
+      html+='<div class="card" style="margin-bottom:14px;">'
+        +'<h3>Container '+(ci+1)+' · '+esc(cont.type)+'</h3>'
+        +'<div class="kpi" style="margin-bottom:10px;">'
+        +'  <div class="card"><div class="num">'+cont.count.toLocaleString()+'</div><div class="lab">Packages</div></div>'
+        +'  <div class="card"><div class="num">'+cont.cbm.toFixed(1)+' m³</div><div class="lab">Volume</div></div>'
+        +'  <div class="card"><div class="num">'+Math.round(cont.wt).toLocaleString()+' kg</div><div class="lab">Weight</div></div>'
+        +'</div>'
+        +'<div class="grid2">'
+        +'  <div><span class="muted" style="font-size:.8rem;">Volume utilization</span><div class="bar"><i class="'+(fc>90?'b-danger':(fc>75?'b-warn':'b-green'))+'" style="width:'+Math.min(fc,100)+'%"></i></div><span style="font-size:.8rem;">'+fc.toFixed(0)+'%</span></div>'
+        +'  <div><span class="muted" style="font-size:.8rem;">Weight utilization</span><div class="bar"><i class="'+(fw>90?'b-danger':(fw>75?'b-warn':'b-blue'))+'" style="width:'+Math.min(fw,100)+'%"></i></div><span style="font-size:.8rem;">'+fw.toFixed(0)+'%</span></div>'
+        +'</div>'
+        + (cont.items && cont.items.length ? '<div style="margin-top:10px;font-size:.85rem;">'+cont.items.map(function(i){return i.count+' × '+esc(i.name);}).join(' · ')+'</div>':'')
+        +'</div>';
+    });
+
+    // 柜型对比
+    html+='<h2 style="margin-top:20px;">Container comparison'+(autoSelectOn?' (auto-selected)':'')+'</h2>';
+    html+='<div class="card" style="overflow-x:auto;">';
+    html+='<table class="compare-table"><thead><tr><th>Container</th><th>Containers needed</th><th>Volume util.</th><th>Weight util.</th><th>Best fit</th></tr></thead><tbody>';
+    Object.keys(C.CONTAINERS).forEach(function(t){
+      var r=C.pack(inputs2(), t);
+      if(!r.containers || !r.containers.length){ return; }
+      var vc=Math.ceil(r.totalCbm/C.CONTAINERS[t].cbm);
+      var wc2=Math.ceil(r.totalWt/C.CONTAINERS[t].maxWt);
+      var vu=(r.totalCbm/(r.containers.length*C.CONTAINERS[t].cbm))*100;
+      var wu=(r.totalWt/(r.containers.length*C.CONTAINERS[t].maxWt))*100;
+      var isBest=(t===selectedContainer&&autoSelectOn)||(!autoSelectOn&&t===selectedContainer);
+      html+='<tr class="'+(isBest?'best':'')+'"><td>'+esc(t)+'</td><td>'+r.containers.length+'</td><td>'+vu.toFixed(0)+'%</td><td>'+wu.toFixed(0)+'%</td><td>'+(isBest?'👍':'')+'</td></tr>';
+    });
+    html+='</tbody></table></div>';
+
+    // 2D 三视图
+    html+='<h2 style="margin-top:20px;">2D Loading view</h2>';
+    html+='<p class="muted" style="font-size:.85rem;max-width:720px;">Simplified top / side / front layout. Different package specs are shown in different colors. Exact final positioning depends on your loading crew — this is an estimate.</p>';
+    html+='<div class="legend">';
+    // 颜色图例
+    var pal=['#1360a6','#2aa06a','#d68a1c','#b2458f','#7a5ad8','#c05a5a','#2c9aa5','#8a9b2f'];
+    inputs2().forEach(function(it,ii){
+      var used=items.filter(function(x){return x.uid===it.uid;})[0];
+      if(used && used.quantity>0){
+        html+='<span class="li"><span class="sw" style="background:'+pal[ii%pal.length]+'"></span>'+esc(used.name)+'</span>';
+      }
+    });
+    html+='</div>';
+    var views=C.generateViews(selectedContainer, inputs2());
+    html+='<div class="views3">';
+    ['top','side','front'].forEach(function(k){
+      var v=views[k];
+      html+='<div class="view-box"><h4>'+esc(v.label)+'</h4>'+renderSvg(v,k,pal)+'</div>';
+    });
+    html+='</div>';
+
+    showResult(html);
+  }
+
+  function renderSvg(v,kind,pal){
+    var w=360, h=kind==='top'?260:(kind==='side'?180:180);
+    var svg='<svg class="view-svg" viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(v.label)+' view">';
+    svg+='<rect x="2" y="2" width="'+(w-4)+'" height="'+(h-4)+'" fill="#f6f9fc" stroke="#b9c6d4" stroke-width="1.5" stroke-dasharray="4 3"/>';
+    v.blocks.forEach(function(bk){
+      var x,y,bw,bh;
+      if(kind==='top'){ x=bk.x/(v.w)*w; y=bk.y/(v.h)*h; bw=Math.max(6,bk.w/(v.w)*w); bh=Math.max(6,bk.l/(v.h)*h); }
+      else if(kind==='side'){ x=bk.x/(v.w)*w; y=h-bk.h/(v.h)*h; bw=Math.max(6,bk.w/(v.w)*w); bh=Math.max(4,bk.h/(v.h)*h); }
+      else { x=bk.x/(v.w)*w; y=h-bk.h/(v.h)*h; bw=Math.max(6,bk.w/(v.w)*w); bh=Math.max(4,bk.h/(v.h)*h); }
+      svg+='<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+bh+'" fill="'+pal[bk.idx%pal.length]+'" opacity="0.75" stroke="#164a7a" stroke-width="1"/>';
+    });
+    svg+='</svg>';
+    return svg;
+  }
+
+  // 供对比循环使用的当前 inputs (转成引擎输入)
+  function inputs2(){
+    return items.map(function(it){
+      var effH=it.h;
+      return {uid:it.uid,name:it.name,type:it.type,l:it.l,w:it.w,h:effH,wt:it.wt,quantity:Math.max(0,Math.floor(+it.quantity)||0)};
+    }).filter(function(x){return x.quantity>0;});
+  }
+
+  function showResult(h){ document.getElementById('resultArea').innerHTML=h; }
+
+  /* ---------- 对外API ---------- */
+  window.engine = {
+    setUnit: function(u){ unit=u; renderList(); },
+    addItem: function(){ var it=newItem(); items.push(it); renderList(); },
+    delItem: function(i){ items.splice(i,1); renderList(); },
+    edit: function(i,k,v){ items[i][k]= (k==='quantity')?(+v):(k==='stackable')?!!v:v; renderList(); },
+    editDim: function(i,k,v){ var mm=toMM[unit](v || 0); items[i][k]=Math.max(0,mm); renderList(); },
+    editWt: function(i,v){ items[i].wt=Math.max(0, wtToKg[unit==='ft'?'lb':'kg'](v||0)); renderList(); },
+    pickContainer: function(t){ selectedContainer=t; autoSelectOn=false; document.getElementById('autoSelect').checked=false; renderContainers(); },
+    toggleAuto: function(){ autoSelectOn=document.getElementById('autoSelect').checked; renderContainers(); },
+    calculate: calculate,
+    resetAll: function(){ items=[]; var it=newItem(); items.push(it); selectedContainer="40'"; autoSelectOn=false; document.getElementById('autoSelect').checked=false; unit='mm'; renderContainers(); renderList(); showResult('<div class="result-empty"><span style="font-size:1.8rem;display:block;margin-bottom:8px;">📦</span>Add your packages, pick a container, then calculate.</div>'); }
+  };
+
+  /* ---------- 初始化 ---------- */
+  items.push(newItem());
+  renderContainers(); renderList();
+  try{document.getElementById('year').textContent=new Date().getFullYear();}catch(e){}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HS Code Toolbox — HS Code Lookup & Container Loading Calculator for Exporters</title>
+<meta name="description" content="Free tools for importers & exporters: lookup HS codes with US/China/EU duty rates, and calculate how many cartons fit in your shipping container. Built for factories by a trade professional.">
+<link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="HS Code Toolbox home">
+      <img src="assets/logo_hscodetoolbox.jpg" alt="HS Code Toolbox logo">
+      <span><span class="hl">hscode</span><span class="hl2">toolbox</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="hs-code-lookup.html">HS Code Lookup</a>
+      <a href="container-calculation.html">Container Load</a>
+      <a href="guides.html">Guides</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="btn btn-primary" href="hs-code-lookup.html">Get Started</a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="section" style="padding-top:64px;padding-bottom:48px;">
+    <div class="wrap center">
+      <span class="eyebrow">Free tools for exporters &amp; importers</span>
+      <h1>Look up HS codes &amp; pack your container in seconds</h1>
+      <p class="muted" style="max-width:640px;margin:0 auto 26px;font-size:1.08rem;">
+        Find the right HS code with US / China / EU duty rates, and see exactly how many cartons fit your 20ft, 40ft or 40HC container. No sign-up, no cost.
+      </p>
+      <form class="search-bar" style="max-width:620px;margin:0 auto 14px;" onsubmit="event.preventDefault();goLookup();">
+        <input id="heroQuery" class="input" type="text" placeholder="Try a code like 3907 or a product like 'PVC resin'…" aria-label="Search HS code or product">
+        <button class="btn btn-primary btn-lg" type="submit">Search</button>
+      </form>
+      <p class="muted" style="font-size:.85rem;">Type an HS code (4–10 digits) or an English product name.</p>
+    </div>
+  </section>
+
+  <!-- Tool cards -->
+  <section class="section alt" style="padding-top:44px;">
+    <div class="wrap">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;">
+        <article class="card hover">
+          <div class="icon-badge blue" style="margin-bottom:14px;" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <h3>HS Code Lookup</h3>
+          <p class="muted" style="min-height:52px;">Search by code or product name. Compare import duty &amp; tax rates across the USA, China and the EU side by side.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a class="btn btn-primary" href="hs-code-lookup.html">Open Tool</a>
+            <a class="btn btn-ghost" href="guides.html#hs-code">Read Guide</a>
+          </div>
+        </article>
+
+        <article class="card hover">
+          <div class="icon-badge green" style="margin-bottom:14px;" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h18v10H3z"/><path d="M7 8V5h10v3"/><path d="M8 12h8"/></svg>
+          </div>
+          <h3>Container Loading Calculator</h3>
+          <p class="muted" style="min-height:52px;">Enter your cartons and see how many fit a 20ft, 40ft or 40HC container — with loading rate, weight check and a 2D layout view.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a class="btn btn-green" href="container-calculation.html">Open Tool</a>
+            <a class="btn btn-ghost" href="guides.html#loading">Read Guide</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Factory-angle selling points -->
+  <section class="section" style="padding-top:52px;">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:30px;">
+        <span class="eyebrow">Designed from the factory floor</span>
+        <h2>Built for the people actually shipping the goods</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
+        <div class="card">
+          <h3>🗺️ Real-world codes</h3>
+          <p class="muted">Start from the 6-digit global base and drill into US, China and EU subdivisions your way.</p>
+        </div>
+        <div class="card">
+          <h3>📦 Loading you can trust</h3>
+          <p class="muted">Volume and weight constraints both matter. We show you which one hits the ceiling first — before it costs you at the port.</p>
+        </div>
+        <div class="card">
+          <h3>🧭 No jargon, no sign-up</h3>
+          <p class="muted">Practical, factory-first guidance written by an actual trade operator — not marketing fluff.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured content -->
+  <section class="section blue" style="padding-top:48px;">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:26px;">
+        <span class="eyebrow">From the toolbox knowledge base</span>
+        <h2>Learn before you ship</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+        <a class="card hover" href="guides.html#hs-code" style="display:block;">
+          <span class="tag blue">HS Code 101</span>
+          <h3 style="margin-top:10px;">What Is an HS Code?</h3>
+          <p class="muted">Understand the 6-digit global base and why national subdivisions matter.</p>
+        </a>
+        <a class="card hover" href="guides.html#shipping" style="display:block;">
+          <span class="tag green">Shipping Practice</span>
+          <h3 style="margin-top:10px;">FCL vs LCL: Which Saves You More?</h3>
+          <p class="muted">A practical breakdown of full-container vs less-than-container loads.</p>
+        </a>
+        <a class="card hover" href="guides.html#loading" style="display:block;">
+          <span class="tag green">Loading</span>
+          <h3 style="margin-top:10px;">How Many Cartons Fit a 40ft?</h3>
+          <p class="muted">Real loading math to maximize every cubic metre you pay for.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo_hscodetoolbox.jpg" alt="HS Code Toolbox logo" style="margin-bottom:10px;">
+        <p>Free, practical tools for exporters and importers — stripped of the jargon.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <a href="hs-code-lookup.html">HS Code Lookup</a>
+        <a href="container-calculation.html">Container Loading Calculator</a>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <a href="guides.html">Knowledge Base</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="cookie.html">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> hscodetoolbox.com. All rights reserved. Tools are provided for reference only.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  try { document.getElementById('year').textContent = new Date().getFullYear(); } catch(e){}
+  window.goLookup = function(){
+    var q = (document.getElementById('heroQuery').value || '').trim();
+    var url = 'hs-code-lookup.html';
+    if (q) url += '?q=' + encodeURIComponent(q);
+    location.href = url;
+  };
+})();
+</script>
+</body>
+</html>

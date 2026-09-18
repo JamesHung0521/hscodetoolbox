@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Base — HS Code, Shipping &amp; Container Loading Guides — HS Code Toolbox</title>
+<meta name="description" content="Practical guides for exporters and importers: HS code basics, FCL vs LCL, Incoterms, customs clearance, and container loading calculations.">
+<link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .cat{margin-bottom:14px;}
+  .cat h2{display:flex;align-items:center;gap:10px;}
+  .art-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;}
+  .art{display:block;}
+  .art h3{margin:0 0 4px;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/logo_hscodetoolbox.jpg" alt="HS Code Toolbox logo"><span><span class="hl">hscode</span><span class="hl2">toolbox</span></span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="hs-code-lookup.html">HS Code Lookup</a>
+      <a href="container-calculation.html">Container Load</a>
+      <a href="guides.html" class="active">Guides</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="btn btn-primary" href="hs-code-lookup.html">Get Started</a>
+  </div>
+</header>
+
+<main>
+  <section class="section" style="padding-bottom:20px;">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:28px;">
+        <span class="eyebrow">Knowledge base</span>
+        <h1>Learn before you ship</h1>
+        <p class="muted" style="max-width:640px;margin:0 auto;">Practical, factory-first guides written by an actual trade operator. Skip the jargon, get what actually matters for your shipment.</p>
+      </div>
+
+      <!-- HS Code 科普 -->
+      <div class="cat" id="hs-code">
+        <h2><span class="tag blue">HS Code 101</span> Understanding HS codes</h2>
+        <p class="muted" style="margin:0 0 14px;">The 6-digit global base and national subdivisions that determine your duty and clearance.</p>
+        <div class="art-list">
+          <a class="card hover art" href="guide-hs-basics.html"><h3>What Is an HS Code and Why It Matters</h3><p class="muted">The foundation every exporter needs.</p></a>
+          <a class="card hover art" href="guide-hs-htsus-taric.html"><h3>HS Code vs HTSUS vs TARIC</h3><p class="muted">Which number do you actually need?</p></a>
+          <a class="card hover art" href="guide-hs-find.html"><h3>Find the Correct HS Code in 3 Steps</h3><p class="muted">A simple, repeatable method.</p></a>
+        </div>
+      </div>
+
+      <!-- 外贸实操 -->
+      <div class="cat" id="shipping">
+        <h2><span class="tag green">Shipping Practice</span> Getting the shipment right</h2>
+        <p class="muted" style="margin:0 0 14px;">Real operational guidance on how goods actually move.</p>
+        <div class="art-list">
+          <a class="card hover art" href="guide-fcl-lcl.html"><h3>FCL vs LCL: Which Saves You More?</h3><p class="muted">Full-container vs less-than-container loads.</p></a>
+          <a class="card hover art" href="guide-incoterms.html"><h3>Incoterms 2020 for Factory Exporters</h3><p class="muted">Who pays for what at each step?</p></a>
+          <a class="card hover art" href="guide-documents.html"><h3>Customs Clearance 101: Documents</h3><p class="muted">Every shipment needs these.</p></a>
+        </div>
+      </div>
+
+      <!-- 装箱指南 -->
+      <div class="cat" id="loading">
+        <h2><span class="tag green">Loading</span> Pack &amp; load your container</h2>
+        <p class="muted" style="margin:0 0 14px;">Maximize every cubic metre you pay for.</p>
+        <div class="art-list">
+          <a class="card hover art" href="guide-container-types.html"><h3>20ft vs 40ft vs 40HC</h3><p class="muted">Which container fits your cargo?</p></a>
+          <a class="card hover art" href="guide-cbm.html"><h3>CBM vs Gross Weight</h3><p class="muted">What really decides your utilization.</p></a>
+          <a class="card hover art" href="guide-how-many-cartons.html"><h3>How Many Cartons Fit a Container?</h3><p class="muted">Real loading math — try the calculator.</p></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand"><img src="assets/logo_hscodetoolbox.jpg" alt="HS Code Toolbox logo" style="margin-bottom:10px;"><p>Free, practical tools for exporters and importers.</p></div>
+      <div><h4>Tools</h4><a href="hs-code-lookup.html">HS Code Lookup</a><a href="container-calculation.html">Container Loading Calculator</a></div>
+      <div><h4>Resources</h4><a href="guides.html">Knowledge Base</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="cookie.html">Cookie Policy</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> hscodetoolbox.com. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<script>try{document.getElementById('year').textContent=new Date().getFullYear();}catch(e){}</script>
+</body>
+</html>

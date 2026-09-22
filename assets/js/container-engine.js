@@ -134,35 +134,45 @@ window.ContainerEngine = (function(){
     return best;
   }
 
-  // 2D三视图数据(俯/侧/正): 生成占位矩形(按当前柜, 简化示意不同规格不同色)
-  function generateViews(containerType, items){
+  // 2D三视图数据(俯/侧/正): 按纸箱真实尺寸在柜内的排布(rows沿长/cols沿宽/layers沿高)绘制网格
+  function generateViews(containerType, items, perCargo){
     var c=CONTAINERS[containerType];
-    var palette=['#1360a6','#2aa06a','#d68a1c','#b2458f','#7a5ad8','#c05a5a','#2c9aa5','#8a9b2f'];
     var views={
       top:{label:'Top (俯视)', w:c.innerW, h:c.innerL, blocks:[]},
       side:{label:'Side view (侧视)', w:c.innerL, h:c.innerH, blocks:[]},
       front:{label:'Front (正视)', w:c.innerW, h:c.innerH, blocks:[]}
     };
     if(!items || !items.length){ return views; }
-    var size=0;
-    items.forEach(function(it){ if(it.quantity>0) size++; });
-    var usable=items.filter(function(it){return it.quantity>0;});
-    // 按体积占比分配大致比例绘制示意块(非精确3D投影,用于可视化)
-    var totalVol=usable.reduce(function(s,it){return s+it.l*it.w*it.h*it.quantity;},0)||1;
-    var accX=0;
+    var usable=items.filter(function(it){ return it.quantity>0; });
+    if(!usable.length){ return views; }
+
     usable.forEach(function(it,idx){
-      var vol=it.l*it.w*it.h*it.quantity;
-      var fr=Math.min(vol/totalVol, 0.5); // 单类不超半
-      var color=palette[idx%palette.length];
-      // Top: 用宽度块
-      var bw=Math.max(20, c.innerW*Math.sqrt(fr));
-      var bl=Math.max(20, c.innerL*Math.sqrt(fr));
-      views.top.blocks.push({x:accX%(c.innerW-bw), y:(Math.floor(accX/(c.innerW-bw))* (c.innerL-bl))%(c.innerL-bl), w:bw, l:bl, color:color, label:it.name, idx:idx});
-      // Front: 宽×高
-      views.front.blocks.push({x:accX%(c.innerW-bw), y:0, w:bw, h:c.innerH*Math.min(fr*2,0.8), color:color, label:it.name, idx:idx});
-      // Side: 长×高
-      views.side.blocks.push({x:0, y:0, w:c.innerL*Math.min(fr*1.6,0.9), h:c.innerH*Math.min(fr*1.4,0.75), color:color, label:it.name, idx:idx});
-      accX+=bw+10;
+      // 用真实的单品类装箱排布: 返回 {orient:[l,w,h], rows, cols, layers}
+      var pk=packOneKind(c, it);
+      if(!pk.count || !pk.orient) return;
+      var oL=pk.orient[0], oW=pk.orient[1], oH=pk.orient[2];
+      var rows=pk.rows, cols=pk.cols, layers=pk.layers; // rows沿柜长L, cols沿柜宽W, layers沿柜高H
+      // 显示名: 该品类实际能放多少(按填的数量截断, 但网格按单层能够放的列/表展示)
+      var meta={ name:it.name, uid:it.uid, color:idx%8, l:oL, w:oW, h:oH, rows:rows, cols:cols, layers:layers };
+
+      // ---- Top (俯视): 看 宽(W横) × 长(L纵), 单层铺开 rows×cols 个箱面, 每格尺寸 w×l ----
+      for(var r=0;r<rows;r++){
+        for(var col=0;col<cols;col++){
+          views.top.blocks.push({x:col*oW, y:r*oL, w:oW-2, l:oL-2, meta:meta, cols:cols, rows:rows});
+        }
+      }
+      // ---- Side view (侧视): 看 长(L横) × 高(H纵), 一层 rows 个沿长排, 堆 layers 层; 每格 l×h ----
+      for(var ly=0;ly<layers;ly++){
+        for(var rr=0;rr<rows;rr++){
+          views.side.blocks.push({x:rr*oL, y:ly*(oH+4), w:oL-2, h:oH-2, meta:meta, perLayer:rows, layers:layers});
+        }
+      }
+      // ---- Front (正视): 看 宽(W横) × 高(H纵), 一层 cols 个沿宽排, 堆 layers 层; 每格 w×h ----
+      for(var ly2=0;ly2<layers;ly2++){
+        for(var cc=0;cc<cols;cc++){
+          views.front.blocks.push({x:cc*oW, y:ly2*(oH+4), w:oW-2, h:oH-2, meta:meta, perLayer:cols, layers:layers});
+        }
+      }
     });
     return views;
   }

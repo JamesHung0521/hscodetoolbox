@@ -357,9 +357,9 @@
     setUnit: function(u){ unit=u; renderList(); },
     addItem: function(){ var it=newItem(); items.push(it); renderList(); },
     delItem: function(i){ items.splice(i,1); renderList(); },
-    edit: function(i,k,v){ items[i][k]= (k==='quantity')?(+v):(k==='stackable')?!!v:v; renderList(); },
-    editDim: function(i,k,v){ var mm=toMM[unit](v || 0); items[i][k]=Math.max(0,mm); renderList(); },
-    editWt: function(i,v){ items[i].wt=Math.max(0, wtToKg[unit==='ft'?'lb':'kg'](v||0)); renderList(); },
+    edit: function(i,k,v){ items[i][k]= (k==='quantity')?(+v):(k==='stackable')?!!v:v; },  /* 输入过程不 rebuild DOM, 防失焦 */
+    editDim: function(i,k,v){ var mm=toMM[unit](v || 0); items[i][k]=Math.max(0,mm); },   /* 同上 */
+    editWt: function(i,v){ items[i].wt=Math.max(0, wtToKg[unit==='ft'?'lb':'kg'](v||0)); },  /* 同上 */
     pickContainer: function(t){ selectedContainer=t; autoSelectOn=false; document.getElementById('autoSelect').checked=false; renderContainers(); },
     toggleAuto: function(){ autoSelectOn=document.getElementById('autoSelect').checked; renderContainers(); },
     calculate: calculate,

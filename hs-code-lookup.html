@@ -223,6 +223,9 @@
         +'<button aria-label="Remove" style="border:none;background:transparent;color:var(--ink-300);cursor:pointer;" onclick="removeHist('+i+')">✕</button></div>';
     }).join('');
   }
+  /* 暴露到全局, 供 Search 表单 onsubmit / Clear 按钮 onclick 调用(否则外部作用域访问不到报 ReferenceError) */
+  window.doSearch=function(){ doSearch(); };
+  window.clearSearch=function(){ clearSearch(); };
   window.reRun=function(v){ qEl.value=v; doSearch(); };
   window.removeHist=function(i){ var h=getHist(); h.splice(i,1); setHist(h); renderHistory(h); };
 

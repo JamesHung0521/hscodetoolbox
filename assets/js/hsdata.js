@@ -101,7 +101,7 @@ window.HS_ALIAS = [
   { kw:["carton","cardboard-box","paper-box","corrugated"], code:"4819" },
   { kw:["sweater","pullover","cardigan","jersey","knit"], code:"6110" },
   { kw:["bedding","bed linen","tablecloth","pillowcase","linen"], code:"6302" },
-  { kw:["shoes","footwear","leather shoes","boots","sneaker"], code:"6403" },
+  { kw:["shoe","shoes","footwear","leather shoes","boots","sneaker"], code:"6403" },
   { kw:["steel part","steel article","metal article","iron article"], code:"7326" },
   { kw:["screw","bolt","nut","fastener","washer"], code:"7318" },
   { kw:["hand tool","wrench","pliers","hammer","tool"], code:"8205" },

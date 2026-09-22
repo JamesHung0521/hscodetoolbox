@@ -19,7 +19,11 @@
   .item-row .del:hover{color:var(--danger);}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-  .mini-label{font-size:.75rem;color:var(--ink-500);font-weight:600;}
+  .mini-label{font-size:.75rem;color:var(--ink-500);font-weight:600;white-space:nowrap;display:block;}
+  /* 尺寸行三输入框强制对齐: 统一 label 高度 + 输入框顶部对齐 */
+  .grid3 .field{display:flex;flex-direction:column;}
+  .grid3 .mini-label{min-height:16px;line-height:16px;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;}
+  .grid3 .input{width:100%;box-sizing:border-box;align-self:stretch;}
   .stack-toggle{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:.85rem;}
   .add-btn{width:100%;border:1.5px dashed var(--line);background:none;border-radius:var(--radius);padding:12px;color:var(--blue-600);font-weight:700;cursor:pointer;}
   .add-btn:hover{border-color:var(--blue-500);background:var(--bg-blue);}

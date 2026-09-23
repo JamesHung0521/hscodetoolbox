@@ -75,7 +75,9 @@ window.ContainerEngine = (function(){
           // 用排布上限约束(单件朝向), 不能填满时取一次能放的最小值(≥1)分离处理
           if(canFit>0){
             var one=packOneKind(c,entry.it);
-            var oneCount=Math.max(one.count,1);
+            // 单件任何朝向都装不进(如单边超柜长/内高)时 packOneKind.count=0, 必须如实置0让 canFit 归零,
+            // 不得 Math.max(...,1) 强抬成1, 否则超长/超高件会被误判"能装1件"误导用户
+            var oneCount=one.count;
             canFit=Math.min(canFit, oneCount);
           }
           if(canFit<=0) break; // 当前柜对此货再也装不下

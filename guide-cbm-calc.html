@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Calculate CBM and Optimize Your Container Loading — HS Code Toolbox</title>
+<meta name="description" content="Calculate the cubic metres (CBM) of your cargo, why it decides your freight cost, and how to fit more in every container with the free loading calculator.">
+<link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/logo_hscodetoolbox.jpg" alt="HS Code Toolbox logo"><span><span class="hl">hscode</span><span class="hl2">toolbox</span></span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="hs-code-lookup.html">HS Code Lookup</a>
+      <a href="container-calculation.html">Container Load</a>
+      <a href="guides.html" class="active">Guides</a>
+      <a href="about.html">About</a>
+    </nav>
+    <a class="btn btn-primary" href="hs-code-lookup.html">Get Started</a>
+  </div>
+</header>
+<main>
+  <section class="section" style="padding-top:40px;">
+    <div class="wrap prose">
+      <a class="muted" href="guides.html" style="font-size:.85rem;">← Back to Knowledge Base</a>
+      <div style="margin:16px 0 6px;"><span class="tag green">Loading</span></div>
+      <h1 style="margin-bottom:10px;">How to Calculate CBM and Optimize Your Container Loading</h1>
+      <p class="muted" style="font-size:.9rem;">Practical guidance from HS Code Toolbox</p>
+      <p style="margin-top:18px;">CBM stands for cubic metre, and it's basically the number every freight quote secretly runs on. Get it wrong and you're either overpaying for space you don't use, or you book a container that turns out too small. I've seen both.</p>
+      <h2>The math is simple</h2>
+<p>For one box, it's length x width x height, in metres. A carton that's 60cm × 40cm × 30cm works out to 0.6 × 0.4 × 0.3, which is 0.072 cubic metres.</p>
+<p>A thousand of those? 72 m³. That's basically a full 40ft container, before you factor in weight.</p>
+<p>One thing a lot of people miss: you use the <strong>outer</strong> carton size, not the product size. The product might be 55cm, but the box it ships in is 60cm, and that's what takes up space in the container.</p>
+<h2>Volume alone won't tell you whether your cargo fits</h2>
+<p>Containers have two limits fighting each other. There's how much space there is, and how much weight the floor can take.</p>
+<p>Steel and machinery hit the weight limit while the box still looks half empty. Textiles and foam do the opposite — you fill every corner long before the weight.</p>
+<p>So "how much fits" depends entirely on what you're shipping. That's why you can't just Google a magic number, because there isn't one.</p>
+<h2>What the container specs look like</h2>
+<p>A 20ft runs around 33 cubic metres and roughly 28 tonnes of payload. A 40ft is about 67 cubic metres. A 40ft high-cube, the taller one, pushes that to around 76.</p>
+<p>Using our 0.072 m³ carton against a 40ft at 67 m³, you'd nominally fit around 930 cartons — if weight and orientation cooperated, which they usually don't.</p>
+<h2>Orientations change everything</h2>
+<p>A carton can go in upright, on its side, or flat. Each rotation uses the container's length, width and height differently, so the count shifts — sometimes a lot.</p>
+<p>Figuring that out by hand across three container sizes is a chore, and easy to get wrong.</p>
+<p>That's exactly what the <a href="container-calculation.html">Container Loading Calculator</a> handles for you. Plug in your carton size, and it tries every orientation against volume and weight for each container. Free, no sign-up, answers in seconds.</p>
+
+      <div class="card" style="margin-top:26px;background:var(--bg-blue);border:none;">
+        <h3 style="margin:0 0 8px;">Calculate your CBM and loading in seconds</h3>
+        <p class="muted" style="margin:0 0 14px;">Try it free — no sign-up required.</p>
+        <a class="btn btn-primary" href="container-calculation.html">Open the tool</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand"><img src="assets/logo_hscodetoolbox.jpg" alt="HS Code Toolbox logo" style="margin-bottom:10px;"><p>Free, practical tools for exporters and importers.</p></div>
+      <div><h4>Tools</h4><a href="hs-code-lookup.html">HS Code Lookup</a><a href="container-calculation.html">Container Loading Calculator</a></div>
+      <div><h4>Resources</h4><a href="guides.html">Knowledge Base</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="cookie.html">Cookie Policy</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> hscodetoolbox.com. All rights reserved.</span></div>
+  </div>
+</footer>
+<script>try{document.getElementById('year').textContent=new Date().getFullYear();}catch(e){}</script>
+</body>
+</html>

@@ -7,6 +7,59 @@
 <meta name="description" content="Enter your cartons, pallets or bulk bags and see how many fit a 20ft, 40ft or 40HC container. Real-time volume & weight check, loading rate, and a 2D layout view. Free.">
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Container Loading Calculator",
+      "operatingSystem": "Web",
+      "applicationCategory": "BusinessApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Free container loading calculator. Enter cartons, bags, bulk bags or pallets and see how many fit a 20ft, 40ft or 40HC container with volume, weight and a 2D layout view. No sign-up.",
+      "url": "https://hscodetoolbox.com/container-calculation.html"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://hscodetoolbox.com/container-calculation.html",
+      "name": "Container Loading Calculator",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hscodetoolbox.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Container Loading Calculator", "item": "https://hscodetoolbox.com/container-calculation.html" }
+        ]
+      },
+      "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How many cartons fit in a 20ft container?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It depends on your carton size and weight. As a rough guide a 20ft dry container offers about 28 cubic metres of usable volume, but the real number comes from your actual carton dimensions and total weight. Enter them here and the calculator gives the exact count." }
+          },
+          {
+            "@type": "Question",
+            "name": "How many cartons fit in a 40ft container?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A 40ft dry container holds about 58–60 cubic metres of usable space. Your exact carton count depends on carton size, orientation and weight. Load your real package dimensions into the calculator for an accurate estimate." }
+          },
+          {
+            "@type": "Question",
+            "name": "What's the difference between 20ft, 40ft and 40HC containers?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The 40HC (high cube) is the same length as a 40ft but taller, adding roughly a full extra layer of standard cartons. The 20ft is about half the floor space. Your choice depends on the total volume and weight of your cargo." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is volume or weight the limiting factor?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Whichever you hit first. Light, bulky goods fill the container by volume before reaching its max payload; dense, heavy goods hit the weight limit while the box still looks half empty. The calculator checks both limits at once and tells you which one binds you." }
+          }
+        ]
+      }
+    }
+  ]
+}
+</script>
 <style>
   .tool-layout{display:grid;grid-template-columns:340px 1fr;gap:22px;align-items:start;}
   .panel{position:sticky;top:82px;}
@@ -122,6 +175,28 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 支撑文案 + FAQ（SEO） -->
+  <section style="padding:0 0 40px;">
+    <div class="wrap prose" style="max-width:780px;">
+      <h2>How many cartons can fit in a container?</h2>
+      <p>The honest answer is: it depends on your package size and total weight — but that's exactly what this calculator does in seconds. Drop in your carton, bag, bulk bag or pallet dimensions and weight, pick a 20ft, 40ft or 40HC container, and it tells you how many units fit, along with the used volume and weight.</p>
+      <p>Getting this wrong cuts both ways. Overestimate and your shipment gets rejected at origin or held for overweight at destination; underestimate and you book extra boxes (and freight) you don't need. This tool checks the two real limits at once — usable volume and max payload — and flags whichever one binds you first, so you can see whether your cargo is volume-bound or weight-bound before you call your forwarder.</p>
+      <p>Beyond a simple count it also shows a per-container breakdown and a 2D side view of the stack, so you and your warehouse can agree on the packing plan before the truck arrives. No sign-up, no license, free to use as often as you like.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div style="padding:18px 20px 10px;background:#fff;border:1px solid #dfe6ee;border-radius:12px;">
+        <h3>How many cartons fit in a 20ft container?</h3>
+        <p>A 20ft dry container offers roughly 28 cubic metres of usable volume, but the real count depends on your carton dimensions and total weight. Enter your actual package size here to get an exact number instead of a rough guess.</p>
+        <h3>How many cartons fit in a 40ft container?</h3>
+        <p>A 40ft dry container holds about 58–60 cubic metres of usable space. Your exact carton count depends on carton size, orientation and weight — load your real dimensions into the calculator for an accurate estimate.</p>
+        <h3>What's the difference between 20ft, 40ft and 40HC containers?</h3>
+        <p>The 40HC (high cube) is the same length as a 40ft but taller, adding roughly a full extra layer of standard cartons. The 20ft has about half the floor space. Your choice depends on the total volume and weight of your cargo.</p>
+        <h3>Is volume or weight the limiting factor?</h3>
+        <p>Whichever you hit first. Light, bulky cargo fills the container by volume before reaching its max payload; dense, heavy cargo hits the weight limit while the box still looks half empty. The calculator checks both limits together and tells you which one binds you.</p>
       </div>
     </div>
   </section>

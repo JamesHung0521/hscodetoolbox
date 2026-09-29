@@ -7,6 +7,60 @@
 <meta name="description" content="Search HS codes by number or English/Chinese product name. Compare import duty rates for the USA, China and the EU side by side. Free, no sign-up.">
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "HS Code Lookup & Duty Rate Comparator",
+      "operatingSystem": "Web",
+      "applicationCategory": "BusinessApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Free HS code lookup by number or product name, with USA, China and EU import duty rates compared side by side. No sign-up required.",
+      "url": "https://hscodetoolbox.com/hs-code-lookup.html"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://hscodetoolbox.com/hs-code-lookup.html",
+      "name": "HS Code Lookup & Duty Rates (US / China / EU)",
+
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hscodetoolbox.com/" },
+          { "@type": "ListItem", "position": 2, "name": "HS Code Lookup", "item": "https://hscodetoolbox.com/hs-code-lookup.html" }
+        ]
+      },
+      "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is an HS code?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The HS code is the 6-digit Harmonized System number that identifies your product in global trade. The first two digits are the chapter, the next two the heading, and the last two the subheading. Every country that follows the HS shares the same first six digits." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I find the right HS code for my product?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Search by your product name (in English or Chinese) or start from what the product actually is, then narrow down to the exact code. Countries often add extra digits, so verify the final 8- or 10-digit code against the destination country's own tariff schedule before shipping." }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do USA, China and EU duty rates differ for the same code?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The first six digits are international, but each market sets its own national tariff rates and extends the code with extra digits. That is why the same product can carry a different rate in the US (HTSUS), China and the EU (TARIC)." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this HS code lookup free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. The lookup is free, does not require a sign-up, and has no usage limits." }
+          }
+        ]
+      }
+    }
+  ]
+}
+</script>
 <style>
   .tool-hero{ padding:34px 0 20px; }
   .tool-layout{ display:grid; grid-template-columns: 1fr; gap:20px; }
@@ -85,6 +139,24 @@
         <p class="disclaimer">
           ⚠️ <strong>For reference only.</strong> Duty rates depend on your specific country of origin, trade agreements and HS interpretation by customs authorities. Always confirm the final code and applicable rate with your customs broker or the official tariff of the destination country before shipping. Data shown is a demonstration sample.
         </p>
+      </div>
+    </div>
+
+    <div class="wrap prose" style="max-width:780px;margin-top:36px;">
+      <h2>Why the right HS code matters more than you think</h2>
+      <p>A wrong HS code is one of the most common reasons a shipment gets held at the border. It changes the duty you pay, can trigger extra permits or inspections, and sometimes lands your goods in the wrong clearance lane entirely. Getting the first six digits right is global — every country that uses the Harmonized System shares them — but the US, China and the EU each extend the code with their own digits and set their own rates. That is exactly why the same product can be duty-free in one market and carry a meaningful rate in another.</p>
+      <p>Search by what your product <em>is</em>, not by what you hope it will be called. Enter a code or a product name (English or 中文), and this tool shows the matching 6-digit code with the US, China and EU rates side by side. From there, confirm the final national code against the destination tariff before you book your shipment.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="card" style="padding:18px 20px;">
+        <h3>What is an HS code?</h3>
+        <p>It's the 6-digit Harmonized System number that identifies your product in international trade. The first two digits are the chapter, the next two the heading, and the last two the subheading. Countries that follow the HS all share the same first six digits.</p>
+        <h3>How do I find the right HS code?</h3>
+        <p>Start from what the product actually is, search by name, then narrow to the exact code. Because each market extends the code with extra digits, always check the final 8- or 10-digit code against the destination country's tariff schedule before shipping.</p>
+        <h3>Why do duty rates differ between the US, China and the EU?</h3>
+        <p>The first six digits are shared, but every market sets its own national tariff and adds extra digits for classification. That's why the same product can carry a different rate in the US (HTSUS), China and the EU (TARIC).</p>
+        <h3>Is this tool free to use?</h3>
+        <p>Yes. No sign-up, no usage limits, no paywall. Type a code or product name and the rates come up instantly.</p>
       </div>
     </div>
   </section>

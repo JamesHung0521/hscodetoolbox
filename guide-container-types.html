@@ -7,7 +7,7 @@
 <meta name="description" content="Compare 20ft, 40ft and 40ft high-cube containers: inner dimensions, CBM, payload and which container type suits different cargo.">
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
-<style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}</style>
+<style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}.fig{max-width:560px;margin:26px auto;}.fig figcaption{font-size:.82rem;color:#6b7d90;text-align:center;margin-top:8px;}</style>
 </head>
 <body>
 <header class="site-header">
@@ -36,6 +36,43 @@
 <li><strong>40ft (40'):</strong> about 67 CBM with a payload around 26,500 kg. The standard for most full-load shipments.</li>
 <li><strong>40ft high-cube (40'HC):</strong> about 76 CBM with a similar payload to the 40ft. Around 30 cm taller, which matters for bulky, stackable cargo.</li>
 </ul>
+<figure class="fig" role="img" aria-label="Side-profile comparison of 20ft, 40ft and 40ft high-cube containers showing the 40HC height difference">
+  <svg viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+    <defs>
+      <linearGradient id="cont20" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3f8fd6"/><stop offset="100%" stop-color="#1360a6"/></linearGradient>
+      <linearGradient id="cont40" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2aa06a"/><stop offset="100%" stop-color="#1e7a4f"/></linearGradient>
+      <linearGradient id="contHC" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ee8a4b"/><stop offset="100%" stop-color="#d5712e"/></linearGradient>
+    </defs>
+    <!-- baseline -->
+    <line x1="20" y1="215" x2="545" y2="215" stroke="#dae2ea" stroke-width="2" stroke-dasharray="5,4"/>
+    <!-- 20ft -->
+    <g>
+      <rect x="40" y="165" width="120" height="50" fill="url(#cont20)" stroke="#0b3a6b" stroke-width="1.5" rx="2"/>
+      <text x="100" y="198" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">20'</text>
+      <text x="100" y="146" text-anchor="middle" font-size="13" fill="#3a4e63">~33 CBM</text>
+    </g>
+    <!-- 40ft -->
+    <g>
+      <rect x="185" y="115" width="160" height="100" fill="url(#cont40)" stroke="#145c3a" stroke-width="1.5" rx="2"/>
+      <!-- 40HC extra height on top, dashed -->
+      <rect x="185" y="100" width="160" height="15" fill="none" stroke="#d5712e" stroke-width="1.5" stroke-dasharray="4,3" rx="2"/>
+      <text x="265" y="178" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">40'</text>
+      <text x="265" y="96" text-anchor="middle" font-size="13" fill="#3a4e63">~67 CBM</text>
+    </g>
+    <!-- 40HC -->
+    <g>
+      <rect x="370" y="100" width="160" height="115" fill="url(#contHC)" stroke="#b2591e" stroke-width="1.5" rx="2"/>
+      <text x="450" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">40'HC</text>
+      <text x="450" y="86" text-anchor="middle" font-size="13" fill="#3a4e63">~76 CBM</text>
+    </g>
+    <!-- height diff annotation -->
+    <line x1="455" y1="100" x2="455" y2="66" stroke="#d5712e" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <line x1="270" y1="100" x2="270" y2="66" stroke="#d5712e" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <line x1="270" y1="66" x2="455" y2="66" stroke="#d5712e" stroke-width="1.5"/>
+    <text x="362" y="58" text-anchor="middle" font-size="12" fill="#c05f1f">+30cm height</text>
+  </svg>
+  <figcaption>Side view: 20ft vs 40ft vs 40ft high-cube — the 40HC adds height, not length</figcaption>
+</figure>
 <h2>Think in volume AND weight</h2>
 <p>A 20ft and a 40ft are close in payload, but the 40ft carries twice the volume. So the rule of thumb:</p>
 <ul>

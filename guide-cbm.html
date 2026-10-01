@@ -7,7 +7,7 @@
 <meta name="description" content="Understand cubic metre (CBM) vs gross weight in shipping and which constraint decides your container utilization and cost.">
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
-<style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}</style>
+<style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}.fig{max-width:520px;margin:26px auto;}.fig figcaption{font-size:.82rem;color:#6b7d90;text-align:center;margin-top:8px;}</style>
 </head>
 <body>
 <header class="site-header">
@@ -33,6 +33,50 @@
       <h2>What is CBM?</h2>
 <p>CBM stands for cubic metre, the volume of your cargo. For a box, it is length × width × height in metres. A 50cm × 40cm × 30cm carton is 0.5 × 0.4 × 0.3 = 0.06 m³. A thousand of them is 60 m³.</p>
 <p>Total CBM is simply the sum of every package's volume. It is your first and most important number for working out how much container space you need.</p>
+<figure class="fig" role="img" aria-label="Isometric diagram of a carton showing length 0.5m, width 0.4m and height 0.3m">
+  <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+    <defs>
+      <linearGradient id="topFace" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#9fc6ee"/>
+        <stop offset="100%" stop-color="#bcd9f5"/>
+      </linearGradient>
+      <linearGradient id="rightFace" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1a76c8"/>
+        <stop offset="100%" stop-color="#1360a6"/>
+      </linearGradient>
+      <linearGradient id="leftFace" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#0f4c8a"/>
+        <stop offset="100%" stop-color="#165f9f"/>
+      </linearGradient>
+    </defs>
+    <!-- 顶面 -->
+    <polygon points="260,70 400,135 260,200 120,135" fill="url(#topFace)"/>
+    <!-- 左面 -->
+    <polygon points="120,135 260,200 260,285 120,220" fill="url(#leftFace)"/>
+    <!-- 右面 -->
+    <polygon points="260,200 400,135 400,220 260,285" fill="url(#rightFace)"/>
+    <!-- 边线 -->
+    <polyline points="120,135 260,200 400,135 260,70 120,135" fill="none" stroke="#0b3a6b" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="120" y1="135" x2="120" y2="220" stroke="#0b3a6b" stroke-width="2"/>
+    <line x1="400" y1="135" x2="400" y2="220" stroke="#0b3a6b" stroke-width="2"/>
+    <!-- 高 H -->
+    <line x1="120" y1="220" x2="120" y2="280" stroke="#2aa06a" stroke-width="2" stroke-dasharray="4,3"/>
+    <line x1="98" y1="250" x2="120" y2="250" stroke="#2aa06a" stroke-width="1.5"/>
+    <text x="88" y="256" font-size="17" font-weight="700" fill="#228b5c">H</text>
+    <!-- 宽 W -->
+    <line x1="120" y1="250" x2="400" y2="250" stroke="#ee8a4b" stroke-width="2" stroke-dasharray="4,3"/>
+    <line x1="260" y1="238" x2="260" y2="256" stroke="#ee8a4b" stroke-width="1.5"/>
+    <text x="255" y="272" font-size="17" font-weight="700" fill="#c05f1f">W</text>
+    <!-- 长 L 顶面 -->
+    <line x1="120" y1="135" x2="120" y2="130" stroke="#7a4b2a" stroke-width="2" stroke-dasharray="4,3" transform="rotate(28 120 135)"/>
+    <text x="150" y="50" font-size="17" font-weight="700" fill="#5c371f">L</text>
+    <!-- 尺寸标签 -->
+    <text x="420" y="235" font-size="14" fill="#3a4e63">0.5 m</text>
+    <text x="150" y="268" font-size="14" fill="#3a4e63">0.4 m</text>
+    <text x="66" y="176" font-size="14" fill="#3a4e63">0.3 m</text>
+  </svg>
+  <figcaption>One carton: 0.5 m × 0.4 m × 0.3 m = 0.06 m³ (CBM)</figcaption>
+</figure>
 <h2>Volume vs weight: the chargeable basis</h2>
 <p>Carriers historically charge on whichever basis is greater — the shipped weight in tonnes or the volume (CBM) using a conversion factor. Conventionally a rough rule is 1 tonne ≈ 1 CBM, but this varies by trade lane and carrier.</p>
 <p>The practical point for you: dense cargo is charged by weight; light, bulky cargo is charged by volume. Knowing which one you are on tells you where to optimize.</p>

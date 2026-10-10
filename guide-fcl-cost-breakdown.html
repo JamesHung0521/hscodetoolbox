@@ -8,6 +8,20 @@
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Why is the ocean freight only part of the total shipping cost?","acceptedAnswer":{"@type":"Answer","text":"Because there are costs on both ends of the journey. At origin you have trucking, customs clearance, handling and documentation — typically around $1,000-$1,200. At destination there's terminal handling, customs brokerage, bonds, trucking and doc fees — typically $1,200-$1,800. The ocean freight itself is usually 55-65% of the total. Always ask for an all-in quote."}},
+    {"@type":"Question","name":"What are BAF and THC, and why do they appear as separate charges?","acceptedAnswer":{"@type":"Answer","text":"BAF (Bunker Adjustment Factor) is a fuel surcharge that carriers add to adjust for fluctuations in bunker fuel prices. THC (Terminal Handling Charge) covers the cost of moving the container within the port — from truck to stack to vessel, or vice versa. Both are standard line items that every shipment incurs. They're separated from the base freight rate because they vary independently."}},
+    {"@type":"Question","name":"How can I avoid demurrage and detention charges?","acceptedAnswer":{"@type":"Answer","text":"Plan your pickup before the ship arrives. Demurrage starts when the container sits in the port beyond the free days (usually 4-5 working days). Detention is charged when you keep the carrier's container out too long after pickup. Get your trucking arranged early, have customs clearance pre-filed, and confirm your warehouse is ready to receive. Every day of delay is real money — typically $100-$300 per day per container."}},
+    {"@type":"Question","name":"Is it normal for destination charges to equal or exceed the ocean freight?","acceptedAnswer":{"@type":"Answer","text":"On shorter routes, yes. On longer or more expensive lanes, the ocean freight dominates. But destination charges almost always surprise first-time importers because freight quotes often omit them. The honest approach: always budget $1,200-$1,800 for destination costs on a 40ft shipment to the US, on top of whatever the ocean freight quote says."}},
+    {"@type":"Question","name":"What's the difference between a freight quote and an all-in quote?","acceptedAnswer":{"@type":"Answer","text":"A freight quote only covers the ocean portion — port to port. An all-in quote includes origin charges (trucking, customs, handling), ocean freight with surcharges, and destination charges (THC, customs clearance, trucking, documentation). If a forwarder gives you only a freight rate, you're seeing maybe 60% of the real cost. Always request all-in before comparing forwarders."}},
+    {"@type":"Question","name":"How much does customs clearance typically cost at both ends?","acceptedAnswer":{"@type":"Answer","text":"At origin, customs clearance through an agent typically runs around $100-$150. At destination, a licensed customs broker charges roughly $150-$250 for a standard entry, plus the customs bond (around $50 for a single-entry bond). These are relatively fixed costs regardless of cargo value, so they matter proportionally more on smaller shipments."}}
+  ]
+}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -51,12 +65,88 @@
 <p>Use the <a href="hs-code-lookup.html">HS Code Lookup</a> to get your goods classified, and the <a href="container-calculation.html">Container Loading Calculator</a> to check your actual fill before you ask your forwarder for that all-in rate.</p>
     <p style="font-size:.85rem;color:#777;" class="pad">*Figures above are illustrative estimates for a typical 40ft shipment and may shift with route and season. Ask your forwarder for a written all-in rate.</p>
 
+<table style="width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:.95rem;">
+  <thead>
+    <tr style="background:var(--bg);text-align:left;">
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Cost component</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Typical range (40ft)</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Paid by</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Ocean freight</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">$3,800–$4,500</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Depends on Incoterms</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Biggest single line; varies seasonally</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>BAF / fuel surcharge</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">$150–$350</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Usually included in freight quote</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Adjusts with bunker fuel prices</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Origin THC &amp; handling</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">$180–$350</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Exporter / shipper</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Port terminal handling at origin</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Origin customs clearance</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">$100–$150</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Exporter / shipper</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Agent/broker fee at origin port</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Destination THC</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">$300–$450</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Importer / consignee</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Terminal handling at destination port</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Customs clearance (dest.)</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">$150–$250</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Importer / consignee</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Licensed broker fee; plus bond ~$50</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Drayage (both ends)</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">$300–$500 each</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Respective party per Incoterms</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Factory-to-port and port-to-warehouse trucking</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Frequently asked questions</h2>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Why is the ocean freight only part of the total shipping cost?</h3>
+<p>Because there are costs on both ends of the journey. At origin you have trucking, customs clearance, handling and documentation — typically around $1,000-$1,200. At destination there's terminal handling, customs brokerage, bonds, trucking and doc fees — typically $1,200-$1,800. The ocean freight itself is usually 55-65% of the total. Always ask for an all-in quote.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">What are BAF and THC, and why do they appear as separate charges?</h3>
+<p>BAF (Bunker Adjustment Factor) is a fuel surcharge that carriers add to adjust for fluctuations in bunker fuel prices. THC (Terminal Handling Charge) covers the cost of moving the container within the port — from truck to stack to vessel, or vice versa. Both are standard line items that every shipment incurs. They're separated from the base freight rate because they vary independently.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How can I avoid demurrage and detention charges?</h3>
+<p>Plan your pickup before the ship arrives. Demurrage starts when the container sits in the port beyond the free days (usually 4-5 working days). Detention is charged when you keep the carrier's container out too long after pickup. Get your trucking arranged early, have customs clearance pre-filed, and confirm your warehouse is ready to receive. Every day of delay is real money — typically $100-$300 per day per container.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Is it normal for destination charges to equal or exceed the ocean freight?</h3>
+<p>On shorter routes, yes. On longer or more expensive lanes, the ocean freight dominates. But destination charges almost always surprise first-time importers because freight quotes often omit them. The honest approach: always budget $1,200-$1,800 for destination costs on a 40ft shipment to the US, on top of whatever the ocean freight quote says.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">What's the difference between a freight quote and an all-in quote?</h3>
+<p>A freight quote only covers the ocean portion — port to port. An all-in quote includes origin charges (trucking, customs, handling), ocean freight with surcharges, and destination charges (THC, customs clearance, trucking, documentation). If a forwarder gives you only a freight rate, you're seeing maybe 60% of the real cost. Always request all-in before comparing forwarders.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How much does customs clearance typically cost at both ends?</h3>
+<p>At origin, customs clearance through an agent typically runs around $100-$150. At destination, a licensed customs broker charges roughly $150-$250 for a standard entry, plus the customs bond (around $50 for a single-entry bond). These are relatively fixed costs regardless of cargo value, so they matter proportionally more on smaller shipments.</p>
+
       <nav class="continue-reading" aria-label="Related guides" style="margin:24px 0 4px;padding:16px 18px;background:var(--bg);border-left:3px solid var(--accent);">
         <p style="margin:0 0 6px;font-weight:600;font-size:.95rem;">Continue reading</p>
         <ul style="margin:0;padding-left:18px;line-height:1.8;font-size:.95rem;">
-          <li><a href="guide-fcl-lcl.html">FCL vs LCL</a></li>
-          <li><a href="guide-incoterms.html">Who pays what</a></li>
-          <li><a href="guide-documents.html">Paperwork for the quote</a></li>
+          <li><a href="guide-fcl-lcl.html">FCL vs LCL: which saves you more</a></li>
+          <li><a href="guide-incoterms.html">Incoterms 2020: who pays for what</a></li>
+          <li><a href="guide-container-types.html">Container types and dimensions explained</a></li>
+          <li><a href="guide-cbm.html">How to calculate CBM for your shipment</a></li>
         </ul>
       </nav>
       <div class="card" style="margin-top:26px;background:var(--bg-blue);border:none;">

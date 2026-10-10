@@ -8,6 +8,20 @@
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Can I just use ChatGPT to find my HS code?","acceptedAnswer":{"@type":"Answer","text":"You can get a starting point from AI tools, but never ship on an AI-generated code without verifying it against the official tariff schedule. AI doesn't read chapter notes or legal exclusions — the things that actually determine classification. Use it for a rough idea, then confirm with official sources or a broker."}},
+    {"@type":"Question","name":"How long does it usually take to classify a product?","acceptedAnswer":{"@type":"Answer","text":"For a straightforward product with a clear description, you're looking at 15-30 minutes of focused lookup. Composite goods or products with multiple functions can take an hour or more. If you're doing this for dozens of SKUs, budget a few hours and work through them systematically rather than rushing."}},
+    {"@type":"Question","name":"What if my product fits under two different headings?","acceptedAnswer":{"@type":"Answer","text":"That's a genuine classification dilemma, and it happens more often than you'd think. The HS system has General Rules of Interpretation (GIRs) that tell you which heading wins — usually the one with the most specific description, or the one that gives the product its essential character. If you can't resolve it yourself, a binding ruling from customs is the safest move."}},
+    {"@type":"Question","name":"Do I need a different HS code for export and import?","acceptedAnswer":{"@type":"Answer","text":"The first 6 digits are the same worldwide, so the base code doesn't change between export and import. But the full national extension (8 or 10 digits) may differ because each country adds its own subdivisions. Your export declaration uses your origin country's code; your import declaration uses the destination country's code."}},
+    {"@type":"Question","name":"Should I pay a broker to classify my products?","acceptedAnswer":{"@type":"Answer","text":"If you're shipping regularly and the products are anything beyond commodity basics, yes — a licensed customs broker's classification is worth the fee. They carry professional liability and their code choices hold up under audit. For one-off personal shipments, a lookup tool and common sense usually get you there."}},
+    {"@type":"Question","name":"Is there a free way to verify my HS code?","acceptedAnswer":{"@type":"Answer","text":"Yes. Most major markets publish their tariff schedules online for free — the US ITC for HTSUS, the EU TARIC database, and China's customs portal. Cross-referencing your candidate code against two or three of these is a solid free verification step before you commit."}}
+  ]
+}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -37,11 +51,68 @@
 <h2>Step 3 — Verify with the chapter notes and a broker</h2>
 <p>Read the section and chapter notes for your candidate code — they contain crucial inclusions and exclusions. Then, for high-value or ambiguous products, confirm the code with your customs broker before committing.</p>
 <p>A wrong code can change your duty rate, trigger exams, or cause delays. The small effort of double-checking is worth it.</p>
+
+<table style="width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:.95rem;">
+  <thead>
+    <tr style="background:var(--bg);text-align:left;">
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Method</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Best for</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Cost</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Accuracy</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Limitations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Official tariff schedule</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Final verification before filing</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Free</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Highest — this is the legal text</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Requires knowing where to look; no search-by-image</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Lookup tools &amp; databases</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Quick first pass &amp; brainstorming</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Free to moderate</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Good for shortlisting candidates</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Not legally binding; may miss chapter-note exclusions</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Customs broker</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">High-value, ambiguous or composite goods</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Paid service</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Professional liability backing</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Takes longer; not needed for simple commodity items</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Frequently asked questions</h2>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Can I just use ChatGPT to find my HS code?</h3>
+<p>You can get a starting point from AI tools, but never ship on an AI-generated code without verifying it against the official tariff schedule. AI doesn't read chapter notes or legal exclusions — the things that actually determine classification. Use it for a rough idea, then confirm with official sources or a broker.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How long does it usually take to classify a product?</h3>
+<p>For a straightforward product with a clear description, you're looking at 15 to 30 minutes of focused lookup. Composite goods or products with multiple functions can take an hour or more. If you're doing this for dozens of SKUs, budget a few hours and work through them systematically rather than rushing.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">What if my product fits under two different headings?</h3>
+<p>That's a genuine classification dilemma, and it happens more often than you'd think. The HS system has General Rules of Interpretation (GIRs) that tell you which heading wins — usually the one with the most specific description, or the one that gives the product its essential character. If you can't resolve it yourself, a binding ruling from customs is the safest move.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Do I need a different HS code for export and import?</h3>
+<p>The first 6 digits are the same worldwide, so the base code doesn't change between export and import. But the full national extension (8 or 10 digits) may differ because each country adds its own subdivisions. Your export declaration uses your origin country's code; your import declaration uses the destination country's code.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Should I pay a broker to classify my products?</h3>
+<p>If you're shipping regularly and the products are anything beyond commodity basics, yes — a licensed customs broker's classification is worth the fee. They carry professional liability and their code choices hold up under audit. For one-off personal shipments, a lookup tool and common sense usually get you there.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Is there a free way to verify my HS code?</h3>
+<p>Yes. Most major markets publish their tariff schedules online for free — the US ITC for HTSUS, the EU TARIC database, and China's customs portal. Cross-referencing your candidate code against two or three of these is a solid free verification step before you commit.</p>
+
       <nav class="continue-reading" aria-label="Related guides" style="margin:24px 0 4px;padding:16px 18px;background:var(--bg);border-left:3px solid var(--accent);">
         <p style="margin:0 0 6px;font-weight:600;font-size:.95rem;">Continue reading</p>
         <ul style="margin:0;padding-left:18px;line-height:1.8;font-size:.95rem;">
           <li><a href="guide-hs-basics.html">What an HS code is and why it matters</a></li>
           <li><a href="guide-hs-mistakes.html">HS code mistakes that cost you customs delays</a></li>
+          <li><a href="guide-hs-htsus-taric.html">HS Code vs HTSUS vs TARIC — which one do you actually need</a></li>
           <li><a href="guide-use-hs-lookup.html">Search codes both ways with our lookup tool</a></li>
         </ul>
       </nav>

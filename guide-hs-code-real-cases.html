@@ -8,6 +8,20 @@
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}.casebox{background:#fff7f0;border:1px solid #f0d9c0;border-left:4px solid #d5712e;border-radius:10px;padding:16px 18px;margin:18px 0;}.casebox h3{margin:0 0 8px;font-size:1.05rem;color:#a34e12;}.casebox p{margin:0 0 6px;}.casebox .cost{font-weight:700;color:#d64545;}.stat{display:inline-block;text-align:center;padding:10px 14px;margin:0 8px 8px 0;background:#eef6fc;border:1px solid #cfe5f5;border-radius:10px;font-size:.9rem;}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How does customs decide whether to fine me or just reclassify my goods?","acceptedAnswer":{"@type":"Answer","text":"It comes down to intent and pattern. A genuine, first-time error with full cooperation usually results in reclassification and back-duty payment. Repeated misclassifications, codes that deliberately reduce duty, or goods that require a license but were declared without one — those escalate to financial penalties and can trigger a broader audit."}},
+    {"@type":"Question","name":"Can I appeal a customs classification decision?","acceptedAnswer":{"@type":"Answer","text":"Yes, most jurisdictions have a formal appeals or review process. In the US you can file a protest with CBP; in China there is an administrative reconsideration procedure. The key is to act quickly — there are usually strict deadlines (often 30 to 60 days). Have your evidence ready: product specs, photographs, and any broker correspondence that shows you acted in good faith."}},
+    {"@type":"Question","name":"Does using a licensed customs broker protect me from penalties?","acceptedAnswer":{"@type":"Answer","text":"A licensed broker reduces your risk significantly but does not give you blanket immunity. If you provided accurate product information and the broker chose the wrong code, you have a strong case for mitigation. But if you gave incomplete or misleading specs, the liability stays with you. Document everything — the more paper trail you have, the stronger your position."}},
+    {"@type":"Question","name":"What is an export rebate clawback and how does it relate to HS codes?","acceptedAnswer":{"@type":"Answer","text":"Some countries refund a portion of domestic taxes on exported goods, and the refund amount is tied to the HS code declared. If you used a code that entitled you to a higher rebate than you should have received, customs can demand repayment of the excess — with interest. The Zhenjiang case in this article is a textbook example: a wrong code led to an RMB 1.88 million repayment across 32 batches."}},
+    {"@type":"Question","name":"How do I know if my current HS codes are actually correct?","acceptedAnswer":{"@type":"Answer","text":"Start by pulling your last 10 declarations and comparing the declared codes against the actual product specifications. Check whether the code still appears in the current tariff schedule — rates and descriptions change. If anything looks uncertain, run it past your broker in writing. A half-hour review now can save you a seven-figure headache later."}},
+    {"@type":"Question","name":"Are certain products more likely to get flagged for HS code checks?","acceptedAnswer":{"@type":"Answer","text":"Products with high duty differentials between similar codes, items subject to anti-dumping measures, and goods eligible for export rebates are scrutinised most heavily. Electronics, steel products, chemicals and solar components all get extra attention. If your product sits in one of these categories, invest more time in getting the classification right — the enforcement focus is real."}}
+  ]
+}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -66,12 +80,70 @@
         <li><strong>Watch out for rebate- and license-linked codes.</strong> That is where the biggest, most painful penalties live.</li>
       </ul>
 
+      <table style="width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:.95rem;">
+  <thead>
+    <tr style="background:var(--bg);text-align:left;">
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Scenario</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Code used</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Correct code</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Steel wire export (Ningbo)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">7217.9000</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">7217.2000</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">One-digit shift triggered a licence violation; RMB 3,900 fine on RMB 77,000 goods</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">PV ribbon export (Zhenjiang)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">8311.3000</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">7408.1900 / 7409.1190</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Wrong rebate code across 32 batches; RMB 1,885,300 clawed back</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Generic "other" code (typical)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">…90 / …99 catch-all</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Specific product heading</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Flagged by automated systems; higher exam probability and potential reclassification</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Correct classification (ideal)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Product-specific 10-digit code</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Same</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Smooth clearance, correct duty, no licence or rebate issues</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Frequently asked questions</h2>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How does customs decide whether to fine me or just reclassify my goods?</h3>
+<p>It comes down to intent and pattern. A genuine, first-time error with full cooperation usually results in reclassification and back-duty payment. Repeated misclassifications, codes that deliberately reduce duty, or goods that require a license but were declared without one — those escalate to financial penalties and can trigger a broader audit.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Can I appeal a customs classification decision?</h3>
+<p>Yes, most jurisdictions have a formal appeals or review process. In the US you can file a protest with CBP; in China there is an administrative reconsideration procedure. The key is to act quickly — there are usually strict deadlines (often 30 to 60 days). Have your evidence ready: product specs, photographs, and any broker correspondence that shows you acted in good faith.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Does using a licensed customs broker protect me from penalties?</h3>
+<p>A licensed broker reduces your risk significantly but does not give you blanket immunity. If you provided accurate product information and the broker chose the wrong code, you have a strong case for mitigation. But if you gave incomplete or misleading specs, the liability stays with you. Document everything — the more paper trail you have, the stronger your position.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">What is an export rebate clawback and how does it relate to HS codes?</h3>
+<p>Some countries refund a portion of domestic taxes on exported goods, and the refund amount is tied to the HS code declared. If you used a code that entitled you to a higher rebate than you should have received, customs can demand repayment of the excess — with interest. The Zhenjiang case in this article is a textbook example: a wrong code led to an RMB 1.88 million repayment across 32 batches.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How do I know if my current HS codes are actually correct?</h3>
+<p>Start by pulling your last 10 declarations and comparing the declared codes against the actual product specifications. Check whether the code still appears in the current tariff schedule — rates and descriptions change. If anything looks uncertain, run it past your broker in writing. A half-hour review now can save you a seven-figure headache later.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Are certain products more likely to get flagged for HS code checks?</h3>
+<p>Products with high duty differentials between similar codes, items subject to anti-dumping measures, and goods eligible for export rebates are scrutinised most heavily. Electronics, steel products, chemicals and solar components all get extra attention. If your product sits in one of these categories, invest more time in getting the classification right — the enforcement focus is real.</p>
+
       <nav class="continue-reading" aria-label="Related guides" style="margin:24px 0 4px;padding:16px 18px;background:var(--bg);border-left:3px solid var(--accent);">
         <p style="margin:0 0 6px;font-weight:600;font-size:.95rem;">Continue reading</p>
         <ul style="margin:0;padding-left:18px;line-height:1.8;font-size:.95rem;">
           <li><a href="guide-hs-mistakes.html">Common HS-code mistakes to avoid</a></li>
-          <li><a href="guide-hs-find.html">How to find your HS code</a></li>
+          <li><a href="guide-hs-find.html">How to find your HS code in 3 steps</a></li>
           <li><a href="guide-hs-htsus-taric.html">US HTSUS vs China vs EU TARIC</a></li>
+          <li><a href="guide-duty-preference-fta.html">How to use FTA preference to reduce duty</a></li>
         </ul>
       </nav>
       <div class="card" style="margin-top:26px;background:var(--bg-blue);border:none;">

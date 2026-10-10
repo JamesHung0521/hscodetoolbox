@@ -8,6 +8,20 @@
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do customs authorities catch wrong HS codes?","acceptedAnswer":{"@type":"Answer","text":"They don't need to inspect every container. Customs systems flag declarations automatically when the code doesn't match the product description, when the duty rate seems unusually low for the item, or when the same importer keeps using borderline codes. Random exams catch the rest. The idea that you'll fly under the radar long-term is a gamble that rarely pays off."}},
+    {"@type":"Question","name":"What happens if I discover I've been using the wrong code for months?","acceptedAnswer":{"@type":"Answer","text":"Voluntary disclosure is almost always the better path than waiting for customs to find it. Most jurisdictions have reduced-penalty programmes for self-reported errors. Go to your broker, document what went wrong, and file amended declarations. The cost of catching it yourself is typically much smaller than the cost of a compliance audit."}},
+    {"@type":"Question","name":"Can a small typo in an HS code actually cause problems?","acceptedAnswer":{"@type":"Answer","text":"Yes. A single wrong digit can move your product into a completely different heading with a higher duty rate, an export control requirement, or an anti-dumping order. Trust me, customs scanners read every digit — they don't round or approximate. Double-checking the code character by character takes 10 seconds and prevents weeks of delays."}},
+    {"@type":"Question","name":"Who is legally responsible — the exporter, importer, or broker?","acceptedAnswer":{"@type":"Answer","text":"In most countries, the importer of record carries the ultimate legal liability for the declared classification. The broker acts on your behalf and should advise correctly, but if you gave them wrong product information, the responsibility stays with you. Get the product details right before they reach the broker's desk."}},
+    {"@type":"Question","name":"How often do HS code errors lead to actual penalties vs just delays?","acceptedAnswer":{"@type":"Answer","text":"From experience, most first-time errors for honest mistakes result in reclassification and additional duty payment rather than financial penalties. Repeated errors, patterns of under-valuation, or codes that look deliberately chosen to minimise duty — those attract fines and can trigger full compliance audits. One mistake is a correction; a pattern is a problem."}},
+    {"@type":"Question","name":"Is it worth getting a binding ruling before shipping?","acceptedAnswer":{"@type":"Answer","text":"For high-value or one-off shipments of complex products, absolutely. A binding ruling gives you legal certainty and protects you from retroactive reclassification. For routine shipments of straightforward goods, the cost and lead time of a ruling usually aren't justified. Use common sense — if the classification is genuinely ambiguous, invest in the ruling."}}
+  ]
+}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -41,11 +55,76 @@
 <h2>Forgetting the destination's own rules</h2>
 <p>Even a correct code doesn't guarantee smooth passage. Some destinations add national subdivisions, require specific licenses for certain codes, or apply anti-dumping measures you didn't plan for. Check the destination's treatment before you ship, not after.</p>
 <p>The fix starts at the quoting stage. Look the code up properly, read the notes, confirm the destination depth — and you take most of the border risk off the table.</p>
+
+<table style="width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:.95rem;">
+  <thead>
+    <tr style="background:var(--bg);text-align:left;">
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Mistake type</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">What happens</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Likely consequence</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">How to prevent it</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Wrong digits (typo)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Declaration mismatches product description</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Customs exam, 1-5 day delay</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Character-by-character verification before filing</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Using product name instead of code</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">No code or placeholder entered</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Declaration rejected outright</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Always pair description with the correct tariff code</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Copying a similar product's code</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Wrong heading, wrong duty rate</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Reclassification, back-duty, possible fine</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Look up each product individually by its own specs</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Ignoring chapter notes</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Code appears correct but is actually excluded</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Shipment hold, possible return-to-origin</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Read section and chapter notes before committing</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Wrong national extension depth</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Too few digits for the destination</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Declaration bounced as incomplete</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Know the destination's required digit count (usually 10)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Frequently asked questions</h2>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How do customs authorities catch wrong HS codes?</h3>
+<p>They don't need to inspect every container. Customs systems flag declarations automatically when the code doesn't match the product description, when the duty rate seems unusually low for the item, or when the same importer keeps using borderline codes. Random exams catch the rest. The idea that you'll fly under the radar long-term is a gamble that rarely pays off.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">What happens if I discover I've been using the wrong code for months?</h3>
+<p>Voluntary disclosure is almost always the better path than waiting for customs to find it. Most jurisdictions have reduced-penalty programmes for self-reported errors. Go to your broker, document what went wrong, and file amended declarations. The cost of catching it yourself is typically much smaller than the cost of a compliance audit.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Can a small typo in an HS code actually cause problems?</h3>
+<p>Yes. A single wrong digit can move your product into a completely different heading with a higher duty rate, an export control requirement, or an anti-dumping order. Trust me, customs scanners read every digit — they don't round or approximate. Double-checking the code character by character takes 10 seconds and prevents weeks of delays.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Who is legally responsible — the exporter, importer, or broker?</h3>
+<p>In most countries, the importer of record carries the ultimate legal liability for the declared classification. The broker acts on your behalf and should advise correctly, but if you gave them wrong product information, the responsibility stays with you. Get the product details right before they reach the broker's desk.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How often do HS code errors lead to actual penalties vs just delays?</h3>
+<p>From experience, most first-time errors for honest mistakes result in reclassification and additional duty payment rather than financial penalties. Repeated errors, patterns of under-valuation, or codes that look deliberately chosen to minimise duty — those attract fines and can trigger full compliance audits. One mistake is a correction; a pattern is a problem.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Is it worth getting a binding ruling before shipping?</h3>
+<p>For high-value or one-off shipments of complex products, absolutely. A binding ruling gives you legal certainty and protects you from retroactive reclassification. For routine shipments of straightforward goods, the cost and lead time of a ruling usually aren't justified. Use common sense — if the classification is genuinely ambiguous, invest in the ruling.</p>
+
       <nav class="continue-reading" aria-label="Related guides" style="margin:24px 0 4px;padding:16px 18px;background:var(--bg);border-left:3px solid var(--accent);">
         <p style="margin:0 0 6px;font-weight:600;font-size:.95rem;">Continue reading</p>
         <ul style="margin:0;padding-left:18px;line-height:1.8;font-size:.95rem;">
           <li><a href="guide-hs-find.html">Find the correct code with our 3-step method</a></li>
           <li><a href="guide-hs-basics.html">Understand the HS code structure</a></li>
+          <li><a href="guide-hs-code-real-cases.html">Real cases: how HS code choices changed duty bills</a></li>
           <li><a href="guide-use-hs-lookup.html">Look up codes faster with our tool</a></li>
         </ul>
       </nav>

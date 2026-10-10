@@ -8,6 +8,20 @@
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Which Incoterm should a factory exporter default to?","acceptedAnswer":{"@type":"Answer","text":"FOB is the safest default for most factory exporters. You handle export clearance and get the goods on board the vessel; from that point everything is the buyer's problem. It's clean, widely understood, and doesn't tie up your capital in ocean freight or insurance. Use CIF only if the buyer specifically asks for it and you've priced insurance correctly."}},
+    {"@type":"Question","name":"Does CIF mean the seller is responsible for the goods until they reach the destination port?","acceptedAnswer":{"@type":"Answer","text":"No — this is the most common misunderstanding with CIF. The seller pays freight and insurance to the destination port, but risk transfers to the buyer the moment the goods are loaded on board at the origin port. If the cargo is damaged at sea, it's the buyer's problem to claim on the insurance. The seller's obligation is to arrange and pay for the carriage, not to guarantee safe arrival."}},
+    {"@type":"Question","name":"Is DDP ever a good idea for a small factory exporter?","acceptedAnswer":{"@type":"Answer","text":"It can be, if you have reliable logistics partners at the destination and you understand the import duties there. But for most small exporters, DDP is a trap — you're responsible for import clearance, duty payment, and delivery to a door you've never seen. One unexpected duty or a customs hold and your margin evaporates. Start with FOB or CIF and work toward DDP only as you gain experience in that market."}},
+    {"@type":"Question","name":"What happens if we don't specify an Incoterm in the contract?","acceptedAnswer":{"@type":"Answer","text":"You're leaving money and risk on the table. Without an explicit Incoterm, disputes about who pays for what — especially around loading, insurance, and customs clearance — become arguments instead of contract terms. In practice, the party with less bargaining power usually ends up paying. Always state the Incoterm, the named place, and the version year (e.g., 'FOB Shanghai, Incoterms 2020') in every contract."}},
+    {"@type":"Question","name":"Can Incoterms override the payment terms in a sales contract?","acceptedAnswer":{"@type":"Answer","text":"No. Incoterms only cover delivery, risk and cost allocation — they don't govern payment terms, ownership transfer, or breach of contract. Those are separate contractual matters. An Incoterm of DDP doesn't mean the buyer has already paid; it just means the seller is responsible for getting the goods to the buyer's door duty-paid."}},
+    {"@type":"Question","name":"How do Incoterms interact with the HS code on the customs declaration?","acceptedAnswer":{"@type":"Answer","text":"They don't directly — the HS code classifies what the product is, while the Incoterm tells customs who paid for what in the supply chain. But together they determine the dutiable value. Under CIF terms, for example, the customs value typically includes the cost of goods plus insurance plus freight to the destination port. Under FOB, it usually only includes the goods' value and costs up to the vessel. The same product under different Incoterms can result in different duty amounts."}}
+  ]
+}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -43,12 +57,75 @@
 <p>If you want simplicity and a clean cut of risk, FOB is a solid default for factory exporters. If you want to control the whole delivery and offer a door-to-door price, consider DDP but price it carefully.</p>
 <p>Whichever you choose, be explicit in the contract about the port or place, and about who pays for what. Ambiguity in Incoterms costs real money.</p>
 
+<table style="width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:.95rem;">
+  <thead>
+    <tr style="background:var(--bg);text-align:left;">
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Incoterm</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Seller arranges transport?</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Risk transfers at</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Seller arranges insurance?</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Best for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>EXW</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">No</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Seller's premises (factory door)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">No</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Maximum simplicity for the seller</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>FOB</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Export clearance only</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">On board the vessel at origin port</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">No</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Most ocean shipments; clean risk cut</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>CIF</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Yes (to destination port)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">On board the vessel at origin port</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Yes (minimum cover)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Buyer wants seller-arranged freight</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>DDP</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Yes (all the way to buyer's door)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Buyer's premises, after import clearance</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Seller's choice</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Door-to-door; experienced exporters only</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Frequently asked questions</h2>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Which Incoterm should a factory exporter default to?</h3>
+<p>FOB is the safest default for most factory exporters. You handle export clearance and get the goods on board the vessel; from that point everything is the buyer's problem. It's clean, widely understood, and doesn't tie up your capital in ocean freight or insurance. Use CIF only if the buyer specifically asks for it and you've priced insurance correctly.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Does CIF mean the seller is responsible for the goods until they reach the destination port?</h3>
+<p>No — this is the most common misunderstanding with CIF. The seller pays freight and insurance to the destination port, but risk transfers to the buyer the moment the goods are loaded on board at the origin port. If the cargo is damaged at sea, it's the buyer's problem to claim on the insurance. The seller's obligation is to arrange and pay for the carriage, not to guarantee safe arrival.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Is DDP ever a good idea for a small factory exporter?</h3>
+<p>It can be, if you have reliable logistics partners at the destination and you understand the import duties there. But for most small exporters, DDP is a trap — you're responsible for import clearance, duty payment, and delivery to a door you've never seen. One unexpected duty or a customs hold and your margin evaporates. Start with FOB or CIF and work toward DDP only as you gain experience in that market.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">What happens if we don't specify an Incoterm in the contract?</h3>
+<p>You're leaving money and risk on the table. Without an explicit Incoterm, disputes about who pays for what — especially around loading, insurance, and customs clearance — become arguments instead of contract terms. In practice, the party with less bargaining power usually ends up paying. Always state the Incoterm, the named place, and the version year (e.g., "FOB Shanghai, Incoterms 2020") in every contract.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Can Incoterms override the payment terms in a sales contract?</h3>
+<p>No. Incoterms only cover delivery, risk and cost allocation — they don't govern payment terms, ownership transfer, or breach of contract. Those are separate contractual matters. An Incoterm of DDP doesn't mean the buyer has already paid; it just means the seller is responsible for getting the goods to the buyer's door duty-paid.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How do Incoterms interact with the HS code on the customs declaration?</h3>
+<p>They don't directly — the HS code classifies what the product is, while the Incoterm tells customs who paid for what in the supply chain. But together they determine the dutiable value. Under CIF terms, for example, the customs value typically includes the cost of goods plus insurance plus freight to the destination port. Under FOB, it usually only includes the goods' value and costs up to the vessel. The same product under different Incoterms can result in different duty amounts.</p>
+
       <nav class="continue-reading" aria-label="Related guides" style="margin:24px 0 4px;padding:16px 18px;background:var(--bg);border-left:3px solid var(--accent);">
         <p style="margin:0 0 6px;font-weight:600;font-size:.95rem;">Continue reading</p>
         <ul style="margin:0;padding-left:18px;line-height:1.8;font-size:.95rem;">
-          <li><a href="guide-fcl-lcl.html">FCL vs LCL</a></li>
-          <li><a href="guide-documents.html">Export paperwork</a></li>
-          <li><a href="guide-fcl-cost-breakdown.html">What each cost means</a></li>
+          <li><a href="guide-fcl-cost-breakdown.html">Full breakdown of FCL ocean shipping costs</a></li>
+          <li><a href="guide-fcl-lcl.html">FCL vs LCL: which saves you more</a></li>
+          <li><a href="guide-documents.html">Export documentation checklist</a></li>
+          <li><a href="guide-commercial-invoice-template.html">Free commercial invoice template</a></li>
         </ul>
       </nav>
       <div class="card" style="margin-top:26px;background:var(--bg-blue);border:none;">

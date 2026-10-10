@@ -8,6 +8,20 @@
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Do all my shipments need an HS code, even small parcels?","acceptedAnswer":{"@type":"Answer","text":"Yes. Any commercial shipment crossing a border needs a classification, regardless of size or value. Couriers often pre-fill one for you, but the legal responsibility sits with the importer (or exporter, depending on Incoterms). If the courier's default is wrong, the hold-up lands on you, not them."}},
+    {"@type":"Question","name":"Is an HS code the same as a SKU?","acceptedAnswer":{"@type":"Answer","text":"No. A SKU is internal — it tracks stock inside your warehouse. An HS code is external, used by customs to identify what the product is. Your SKU might be LEATHER-BOOT-BLK-42; the HS code is 6403.20. They serve completely different purposes and shouldn't be mixed up on invoices."}},
+    {"@type":"Question","name":"How often do HS codes change?","acceptedAnswer":{"@type":"Answer","text":"The WCO updates the global HS roughly every five years (the latest revision took effect in 2022). Individual countries may adjust their national extensions — the HTSUS, TARIC and others — more often. If you are still using codes from a decade-old catalogue, there is a real chance they have drifted."}},
+    {"@type":"Question","name":"Where can I find the official HS code list?","acceptedAnswer":{"@type":"Answer","text":"The WCO publishes the global 6-digit HS nomenclature. For national extensions, go to the source: US ITC for HTSUS, the European Commission TARIC database for the EU, or your own customs authority tariff portal. Third-party lookup tools are convenient for a first pass, but the legal text is what customs will hold you to."}},
+    {"@type":"Question","name":"How many digits do I actually need to declare?","acceptedAnswer":{"@type":"Answer","text":"For international shipping, the first 6 digits are enough. For import clearance into a specific country, you need that country full tariff code — 10 digits for the US, EU, China and most major markets. A 6-digit code on a US entry will get bounced."}},
+    {"@type":"Question","name":"Who decides the HS code — me, the buyer, or the carrier?","acceptedAnswer":{"@type":"Answer","text":"Technically, customs authorities make the final call. In practice, the importer of record is responsible for the classification declared on entry. If your buyer asks you to pick a convenient code, push back in writing. A bad code saved at quoting stage usually costs more when it surfaces at the border."}}
+  ]
+}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -49,14 +63,74 @@
 <p>Getting it right isn't just about paperwork — it protects your money and your delivery time.</p>
 <h2>Different countries add more digits</h2>
 <p>Once goods reach a specific border, the 6-digit code is extended for national tariff and statistics. The USA uses 10-digit HTSUS numbers, the EU uses TARIC, and China uses its own 10-digit schedule. Two digits of six are global; the extra digits are local. That is why the same product can appear on customs forms with a different, longer code depending on destination.</p>
+
+<table style="width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:.95rem;">
+  <thead>
+    <tr style="background:var(--bg);text-align:left;">
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">System</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Digits</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Used in</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>HS</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">6</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Global (WCO members)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">The universal foundation. First 6 digits are the same everywhere.</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>HTSUS</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">10</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">United States</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Last 4 digits set US duty rates.</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>TARIC</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">10</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">European Union</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">EU measures (anti-dumping, quotas) live in digits 7–10.</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>China Customs</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">10</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">China (PRC)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">10-digit CIQ code for import and export.</td>
+    </tr>
+  </tbody>
+</table>
+
 <h2>Where to start</h2>
 <p>Start from what your product <em>is</em>, not what you hope it will be classified as. Search by name first, then read the legal notes in your tariff schedule before committing to a code. A short, careful lookup at the start saves a customs hold at the port.</p>
+
+<h2>Frequently asked questions</h2>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Do all my shipments need an HS code, even small parcels?</h3>
+<p>Yes. Any commercial shipment crossing a border needs a classification, regardless of size or value. Couriers often pre-fill one for you, but the legal responsibility sits with the importer (or exporter, depending on Incoterms). If the courier's default is wrong, the hold-up lands on you, not them.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Is an HS code the same as a SKU?</h3>
+<p>No. A SKU is internal — it tracks stock inside your warehouse. An HS code is external, used by customs to identify what the product is. Your SKU might be <code>LEATHER-BOOT-BLK-42</code>; the HS code is <code>6403.20</code>. They serve completely different purposes and shouldn't be mixed up on invoices.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How often do HS codes change?</h3>
+<p>The WCO updates the global HS roughly every five years (the latest revision took effect in 2022). Individual countries may adjust their national extensions — the HTSUS, TARIC and others — more often. If you're still using codes from a decade-old catalogue, there's a real chance they've drifted.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Where can I find the official HS code list?</h3>
+<p>The WCO publishes the global 6-digit HS nomenclature. For national extensions, go to the source: US ITC for HTSUS, the European Commission's TARIC database for the EU, or your own customs authority's tariff portal. Third-party lookup tools are convenient for a first pass, but the legal text is what customs will hold you to.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How many digits do I actually need to declare?</h3>
+<p>For international shipping, the first 6 digits are enough. For import clearance into a specific country, you need that country's full tariff code — 10 digits for the US, EU, China and most major markets. A 6-digit code on a US entry will get bounced.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Who decides the HS code — me, the buyer, or the carrier?</h3>
+<p>Technically, customs authorities make the final call. In practice, the importer of record is responsible for the classification declared on entry. If your buyer asks you to pick a "convenient" code, push back in writing. A bad code saved at quoting stage usually costs more when it surfaces at the border.</p>
+
       <nav class="continue-reading" aria-label="Related guides" style="margin:24px 0 4px;padding:16px 18px;background:var(--bg);border-left:3px solid var(--accent);">
         <p style="margin:0 0 6px;font-weight:600;font-size:.95rem;">Continue reading</p>
         <ul style="margin:0;padding-left:18px;line-height:1.8;font-size:.95rem;">
           <li><a href="guide-hs-find.html">Find the correct HS code for your product in 3 steps</a></li>
           <li><a href="guide-hs-htsus-taric.html">HS Code vs HTSUS vs TARIC — which one do you actually need</a></li>
           <li><a href="guide-hs-mistakes.html">HS code mistakes that cost exporters customs delays</a></li>
+          <li><a href="guide-hs-code-real-cases.html">Real cases: how HS code choices changed duty bills</a></li>
         </ul>
       </nav>
 

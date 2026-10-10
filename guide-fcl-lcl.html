@@ -8,6 +8,20 @@
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"At what CBM does FCL become cheaper than LCL?","acceptedAnswer":{"@type":"Answer","text":"The crossover point varies by trade lane, but in practice it sits somewhere around 10 to 14 CBM for a 20ft container. Below that threshold, LCL per-CBM rates look attractive. Above it, you're paying for space you don't use in a half-full LCL consignment, and the FCL flat rate starts winning. Always ask your forwarder for both quotes side by side before deciding."}},
+    {"@type":"Question","name":"Can I mix FCL and LCL for the same order?","acceptedAnswer":{"@type":"Answer","text":"Not for the same shipment — each bill of lading is either FCL or LCL. But you can split a large order across multiple shipments, sending the bulk as FCL and a smaller portion as LCL if timing allows. In practice, most shippers just wait until they have enough volume for a full container rather than paying LCL premiums on a partial load."}},
+    {"@type":"Question","name":"Is LCL more likely to get damaged than FCL?","acceptedAnswer":{"@type":"Answer","text":"Statistically, yes — your cargo shares a container with other shippers' goods, gets handled more times at the consolidation warehouse, and sits in the container longer while it waits to be filled. Fragile or high-value goods almost always do better in FCL. For sturdy, well-palletised commodity goods, the risk difference is small but real."}},
+    {"@type":"Question","name":"How much longer does LCL take compared to FCL?","acceptedAnswer":{"@type":"Answer","text":"On top of the ocean transit time (which is the same), LCL typically adds 5 to 10 days for consolidation at origin and de-consolidation at destination. That's the warehouse time — waiting for enough cargo to fill the container, then sorting it out at the other end. If your buyer is counting on a specific delivery date, factor that in."}},
+    {"@type":"Question","name":"Can I switch from LCL to FCL mid-shipment if my order grows?","acceptedAnswer":{"@type":"Answer","text":"Not once the shipment is in motion. But if you haven't booked yet and your volume estimate has grown, absolutely — call your forwarder before the cargo reaches the consolidation warehouse. The earlier you make the switch, the fewer costs you waste on LCL handling that you no longer need."}},
+    {"@type":"Question","name":"Does LCL have the same customs documentation requirements as FCL?","acceptedAnswer":{"@type":"Answer","text":"Yes. The documentation — commercial invoice, packing list, bill of lading, customs declaration — is the same regardless of whether you ship FCL or LCL. The only difference is that your LCL bill of lading will show a house B/L from the consolidator and a master B/L for the whole container. Make sure your documents match the house B/L, not the master."}}
+  ]
+}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -48,12 +62,70 @@
 <h2>Start with your numbers</h2>
 <p>Do not guess. Total up your CBM and weight first. If you are near a container's capacity, the FCL route is usually the better deal. If your order is small, LCL is the flexible option.</p>
 
+<table style="width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:.95rem;">
+  <thead>
+    <tr style="background:var(--bg);text-align:left;">
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Factor</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">FCL</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">LCL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Cost structure</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Flat rate per container; per-unit cost drops with volume</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Per CBM or per ton; higher unit rate but no empty-space cost</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Best volume</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Above ~10-14 CBM (roughly half a 20ft container)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Below ~10 CBM; ideal for samples or small orders</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Transit time</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Faster — direct loading, no consolidation wait</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">+5-10 days for consolidation and de-consolidation</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Handling risk</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Minimal — sealed at origin, opened at destination</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Higher — multiple touches at consolidation warehouse</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Cargo control</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Exclusive use; you decide packing and sealing</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Shared space; depends on consolidator's schedule</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Frequently asked questions</h2>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">At what CBM does FCL become cheaper than LCL?</h3>
+<p>The crossover point varies by trade lane, but in practice it sits somewhere around 10 to 14 CBM for a 20ft container. Below that threshold, LCL per-CBM rates look attractive. Above it, you're paying for space you don't use in a half-full LCL consignment, and the FCL flat rate starts winning. Always ask your forwarder for both quotes side by side before deciding.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Can I mix FCL and LCL for the same order?</h3>
+<p>Not for the same shipment — each bill of lading is either FCL or LCL. But you can split a large order across multiple shipments, sending the bulk as FCL and a smaller portion as LCL if timing allows. In practice, most shippers just wait until they have enough volume for a full container rather than paying LCL premiums on a partial load.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Is LCL more likely to get damaged than FCL?</h3>
+<p>Statistically, yes — your cargo shares a container with other shippers' goods, gets handled more times at the consolidation warehouse, and sits in the container longer while it waits to be filled. Fragile or high-value goods almost always do better in FCL. For sturdy, well-palletised commodity goods, the risk difference is small but real.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How much longer does LCL take compared to FCL?</h3>
+<p>On top of the ocean transit time (which is the same), LCL typically adds 5 to 10 days for consolidation at origin and de-consolidation at destination. That's the warehouse time — waiting for enough cargo to fill the container, then sorting it out at the other end. If your buyer is counting on a specific delivery date, factor that in.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Can I switch from LCL to FCL mid-shipment if my order grows?</h3>
+<p>Not once the shipment is in motion. But if you haven't booked yet and your volume estimate has grown, absolutely — call your forwarder before the cargo reaches the consolidation warehouse. The earlier you make the switch, the fewer costs you waste on LCL handling that you no longer need.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Does LCL have the same customs documentation requirements as FCL?</h3>
+<p>Yes. The documentation — commercial invoice, packing list, bill of lading, customs declaration — is the same regardless of whether you ship FCL or LCL. The only difference is that your LCL bill of lading will show a house B/L from the consolidator and a master B/L for the whole container. Make sure your documents match the house B/L, not the master.</p>
+
       <nav class="continue-reading" aria-label="Related guides" style="margin:24px 0 4px;padding:16px 18px;background:var(--bg);border-left:3px solid var(--accent);">
         <p style="margin:0 0 6px;font-weight:600;font-size:.95rem;">Continue reading</p>
         <ul style="margin:0;padding-left:18px;line-height:1.8;font-size:.95rem;">
-          <li><a href="guide-cbm.html">Estimate your CBM first</a></li>
-          <li><a href="guide-fcl-cost-breakdown.html">FCL cost breakdown</a></li>
-          <li><a href="guide-container-types.html">Container size guide</a></li>
+          <li><a href="guide-cbm.html">How to calculate CBM for your shipment</a></li>
+          <li><a href="guide-fcl-cost-breakdown.html">Full breakdown of FCL ocean shipping costs</a></li>
+          <li><a href="guide-container-types.html">Container types and dimensions explained</a></li>
+          <li><a href="guide-packing-list-template.html">Free packing list template for exporters</a></li>
         </ul>
       </nav>
       <div class="card" style="margin-top:26px;background:var(--bg-blue);border:none;">

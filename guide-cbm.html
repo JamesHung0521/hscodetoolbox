@@ -8,6 +8,20 @@
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}.fig{max-width:520px;margin:26px auto;}.fig figcaption{font-size:.82rem;color:#6b7d90;text-align:center;margin-top:8px;}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do I calculate CBM for irregularly shaped cargo?","acceptedAnswer":{"@type":"Answer","text":"Measure the longest, widest and tallest points of each piece — the bounding box — and calculate as if it were a rectangular carton. Yes, this overestimates slightly, but carriers do the same thing. They measure the outer dimensions of each package, not the product inside. If you ship pallets, include the pallet dimensions, not just the goods on top."}},
+    {"@type":"Question","name":"What's the difference between CBM and chargeable weight?","acceptedAnswer":{"@type":"Answer","text":"CBM is the physical volume of your cargo in cubic metres. Chargeable weight is what the carrier actually bills you on — it's whichever is greater: the actual gross weight in tonnes, or the CBM converted using a ratio (typically 1 CBM = 1 tonne for ocean freight). So a 5 CBM shipment weighing 2 tonnes gets charged as 5 tonnes. Trust me, always calculate both before booking."}},
+    {"@type":"Question","name":"Can I reduce CBM by repackaging?","acceptedAnswer":{"@type":"Answer","text":"Absolutely — and it's one of the easiest ways to save money. If your cartons have excess void space, switching to tighter packaging can shave 10-20% off your total CBM. Vacuum-packing textiles, flat-packing furniture, or nesting smaller boxes can make a dramatic difference. The savings on freight often far outweigh the slightly higher packaging cost."}},
+    {"@type":"Question","name":"How does CBM affect the FCL vs LCL decision?","acceptedAnswer":{"@type":"Answer","text":"It's the primary factor. Below about 10-14 CBM, LCL usually makes sense because you only pay for the space you use. Above that, the per-CBM LCL rate adds up faster than a flat FCL container rate. The crossover depends on the trade lane, but the principle is universal: calculate your CBM first, then compare both options with real numbers."}},
+    {"@type":"Question","name":"Do pallets count toward CBM?","acceptedAnswer":{"@type":"Answer","text":"Yes. The CBM is measured on the outer dimensions of whatever the carrier handles — including pallets, slip sheets, and any overhang. A pallet that's 1.2m x 1.0m with goods stacked 1.5m high is 1.8 CBM per pallet, not the smaller figure you'd get measuring just the goods. Plan your pallet dimensions with CBM in mind from the start."}},
+    {"@type":"Question","name":"Is CBM the same for ocean and air freight?","acceptedAnswer":{"@type":"Answer","text":"The measurement is the same, but the weight-to-volume ratio differs significantly. For air freight, the conversion is typically 1 CBM = 167 kg (or 6,000 cm³ per kg). So a shipment that's charged by weight for ocean freight might be charged by volume for air — or vice versa. Always check the chargeable basis for each mode separately."}}
+  ]
+}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -87,12 +101,72 @@
 <p>If you are volume-constrained, reducing carton dimensions or rethinking pallet stacking increases utilization. If weight-constrained, reducing packaging weight matters more.</p>
 <p>Always calculate your total CBM first — it tells you which container size to even consider before you start shopping rates.</p>
 
+<table style="width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:.95rem;">
+  <thead>
+    <tr style="background:var(--bg);text-align:left;">
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Container</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Internal length</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Internal width</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Internal height</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Usable CBM</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Max payload</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>20GP</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">5.90 m</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">2.35 m</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">2.39 m</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">~33 m³</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">~28,000 kg</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>40GP</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">12.03 m</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">2.35 m</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">2.39 m</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">~67 m³</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">~26,500 kg</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>40HQ</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">12.03 m</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">2.35 m</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">2.69 m</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">~76 m³</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">~26,500 kg</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Frequently asked questions</h2>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How do I calculate CBM for irregularly shaped cargo?</h3>
+<p>Measure the longest, widest and tallest points of each piece — the bounding box — and calculate as if it were a rectangular carton. Yes, this overestimates slightly, but carriers do the same thing. They measure the outer dimensions of each package, not the product inside. If you ship pallets, include the pallet dimensions, not just the goods on top.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">What's the difference between CBM and chargeable weight?</h3>
+<p>CBM is the physical volume of your cargo in cubic metres. Chargeable weight is what the carrier actually bills you on — it's whichever is greater: the actual gross weight in tonnes, or the CBM converted using a ratio (typically 1 CBM = 1 tonne for ocean freight). So a 5 CBM shipment weighing 2 tonnes gets charged as 5 tonnes. Trust me, always calculate both before booking.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Can I reduce CBM by repackaging?</h3>
+<p>Absolutely — and it's one of the easiest ways to save money. If your cartons have excess void space, switching to tighter packaging can shave 10-20% off your total CBM. Vacuum-packing textiles, flat-packing furniture, or nesting smaller boxes can make a dramatic difference. The savings on freight often far outweigh the slightly higher packaging cost.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How does CBM affect the FCL vs LCL decision?</h3>
+<p>It's the primary factor. Below about 10-14 CBM, LCL usually makes sense because you only pay for the space you use. Above that, the per-CBM LCL rate adds up faster than a flat FCL container rate. The crossover depends on the trade lane, but the principle is universal: calculate your CBM first, then compare both options with real numbers.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Do pallets count toward CBM?</h3>
+<p>Yes. The CBM is measured on the outer dimensions of whatever the carrier handles — including pallets, slip sheets, and any overhang. A pallet that's 1.2m x 1.0m with goods stacked 1.5m high is 1.8 CBM per pallet, not the smaller figure you'd get measuring just the goods. Plan your pallet dimensions with CBM in mind from the start.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Is CBM the same for ocean and air freight?</h3>
+<p>The measurement is the same, but the weight-to-volume ratio differs significantly. For air freight, the conversion is typically 1 CBM = 167 kg (or 6,000 cm³ per kg). So a shipment that's charged by weight for ocean freight might be charged by volume for air — or vice versa. Always check the chargeable basis for each mode separately.</p>
+
       <nav class="continue-reading" aria-label="Related guides" style="margin:24px 0 4px;padding:16px 18px;background:var(--bg);border-left:3px solid var(--accent);">
         <p style="margin:0 0 6px;font-weight:600;font-size:.95rem;">Continue reading</p>
         <ul style="margin:0;padding-left:18px;line-height:1.8;font-size:.95rem;">
-          <li><a href="guide-cbm-calc.html">How to calculate CBM and optimize loading</a></li>
-          <li><a href="guide-container-types.html">Which container fits your cargo</a></li>
-          <li><a href="guide-how-many-cartons.html">How many cartons fit a 40ft</a></li>
+          <li><a href="guide-container-types.html">Container types and dimensions explained</a></li>
+          <li><a href="guide-fcl-lcl.html">FCL vs LCL: which saves you more</a></li>
+          <li><a href="guide-how-many-cartons.html">How many cartons fit in a 40ft container</a></li>
+          <li><a href="guide-packing-list-template.html">Free packing list template for exporters</a></li>
         </ul>
       </nav>
       <div class="card" style="margin-top:26px;background:var(--bg-blue);border:none;">

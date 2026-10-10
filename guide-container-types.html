@@ -8,6 +8,20 @@
 <link rel="icon" type="image/png" href="assets/favicon_hscodetoolbox.png">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>.prose{max-width:780px;}.prose h2{margin:28px 0 10px;font-size:1.35rem;}.prose p,.prose li{margin:0 0 12px;line-height:1.75;}.fig{max-width:560px;margin:26px auto;}.fig figcaption{font-size:.82rem;color:#6b7d90;text-align:center;margin-top:8px;}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How do I know if I need a reefer container?","acceptedAnswer":{"@type":"Answer","text":"If your product requires a specific temperature range during transit — typically perishables like fruit, meat, dairy, pharmaceuticals, or certain chemicals — you need a reefer. The key question is: does your product degrade, melt, or become unsafe outside a controlled temperature? If yes, reefer. They cost more and need to be plugged in at the port and on the vessel, so book early — reefer capacity is limited."}},
+    {"@type":"Question","name":"When should I use an open-top container instead of a standard one?","acceptedAnswer":{"@type":"Answer","text":"When your cargo is too tall to fit through the doors of a standard container — things like machinery, large pipes, or items that need crane loading from above. Open-tops have a removable tarpaulin roof instead of a steel roof. They're more expensive and less weatherproof, so only use one when your cargo literally won't fit in a standard box otherwise."}},
+    {"@type":"Question","name":"Is a flat rack container safe for heavy machinery?","acceptedAnswer":{"@type":"Answer","text":"Yes — flat racks are designed for exactly that. They have no side walls and no roof, just a reinforced floor with lashing points. They handle oversized, heavy, or oddly shaped cargo that can't fit inside a box. The trade-off is exposure to weather and sea spray, so your cargo needs to be weather-resistant or well-wrapped. Also, flat rack bookings are subject to space availability on deck."}},
+    {"@type":"Question","name":"What is the difference between a 40ft standard and a 40ft high-cube?","acceptedAnswer":{"@type":"Answer","text":"Same length and width, but the high-cube is about 30 cm taller inside (2.69m vs 2.39m). That extra height gives you roughly 12% more volume — 76 CBM vs 67 CBM. For bulky, lightweight goods like furniture, textiles, or empty plastic bottles, that extra space can mean the difference between needing two containers or fitting everything in one. The freight rate is usually similar."}},
+    {"@type":"Question","name":"Can I ship hazardous goods in any container type?","acceptedAnswer":{"@type":"Answer","text":"No. Hazardous goods (DG cargo) require specific container types and markings depending on the hazard class. Some DG can go in standard dry containers with proper labeling; others need ventilated containers, tank containers, or specially approved equipment. Always declare the correct IMDG class to your carrier upfront — shipping DG without declaration is illegal and dangerous."}},
+    {"@type":"Question","name":"How do I choose between a 20ft and a 40ft container?","acceptedAnswer":{"@type":"Answer","text":"It comes down to your cargo's weight and volume. Heavy, dense goods like steel, tiles, or liquids tend to max out weight before filling the space — a 20ft is usually enough and costs less. Light, bulky goods like furniture or textiles fill the volume first — go with a 40ft or 40HC to use the space efficiently. Calculate your total CBM and weight first, then match to the container that wastes the least of both."}}
+  ]
+}
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -85,12 +99,82 @@
 <h2>Compare before you book</h2>
 <p>Never book on price alone. Compute your total CBM and total weight, then check both against each candidate container. The cheapest-looking option is the one that wastes the least of whichever you will hit first.</p>
 
+<table style="width:100%;border-collapse:collapse;margin:18px 0 8px;font-size:.95rem;">
+  <thead>
+    <tr style="background:var(--bg);text-align:left;">
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Type</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">CBM</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Best suited for</th>
+      <th style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Limitations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>20GP</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">~33 m³</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Dense, heavy goods (steel, tiles, liquids, machinery)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Limited volume; not ideal for bulky items</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>40GP</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">~67 m³</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">General cargo; standard for most full-load shipments</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Lower payload than 20GP; height may limit tall goods</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>40HQ</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">~76 m³</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Light, bulky, stackable goods (furniture, textiles, plastics)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Same payload as 40GP; extra height only helps volume</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Reefer</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">~55-67 m³</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Perishables, pharma, temperature-sensitive goods</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Higher cost; needs power supply; limited availability</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Open Top</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">~67 m³</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Oversized cargo loaded by crane (machinery, pipes)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Tarpaulin roof — less weather protection; premium rate</td>
+    </tr>
+    <tr>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);"><strong>Flat Rack</strong></td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">N/A (open deck)</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Heavy or oversized cargo that exceeds container dimensions</td>
+      <td style="padding:10px 12px;border:1px solid rgba(0,0,0,.08);">Fully exposed to weather; deck-space dependent; premium rate</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Frequently asked questions</h2>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How do I know if I need a reefer container?</h3>
+<p>If your product requires a specific temperature range during transit — typically perishables like fruit, meat, dairy, pharmaceuticals, or certain chemicals — you need a reefer. The key question is: does your product degrade, melt, or become unsafe outside a controlled temperature? If yes, reefer. They cost more and need to be plugged in at the port and on the vessel, so book early — reefer capacity is limited.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">When should I use an open-top container instead of a standard one?</h3>
+<p>When your cargo is too tall to fit through the doors of a standard container — things like machinery, large pipes, or items that need crane loading from above. Open-tops have a removable tarpaulin roof instead of a steel roof. They're more expensive and less weatherproof, so only use one when your cargo literally won't fit in a standard box otherwise.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Is a flat rack container safe for heavy machinery?</h3>
+<p>Yes — flat racks are designed for exactly that. They have no side walls and no roof, just a reinforced floor with lashing points. They handle oversized, heavy, or oddly shaped cargo that can't fit inside a box. The trade-off is exposure to weather and sea spray, so your cargo needs to be weather-resistant or well-wrapped. Also, flat rack bookings are subject to space availability on deck.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">What is the difference between a 40ft standard and a 40ft high-cube?</h3>
+<p>Same length and width, but the high-cube is about 30 cm taller inside (2.69m vs 2.39m). That extra height gives you roughly 12% more volume — 76 CBM vs 67 CBM. For bulky, lightweight goods like furniture, textiles, or empty plastic bottles, that extra space can mean the difference between needing two containers or fitting everything in one. The freight rate is usually similar.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">Can I ship hazardous goods in any container type?</h3>
+<p>No. Hazardous goods (DG cargo) require specific container types and markings depending on the hazard class. Some DG can go in standard dry containers with proper labeling; others need ventilated containers, tank containers, or specially approved equipment. Always declare the correct IMDG class to your carrier upfront — shipping DG without declaration is illegal and dangerous.</p>
+
+<h3 style="font-size:1.05rem;margin:18px 0 6px;">How do I choose between a 20ft and a 40ft container?</h3>
+<p>It comes down to your cargo's weight and volume. Heavy, dense goods like steel, tiles, or liquids tend to max out weight before filling the space — a 20ft is usually enough and costs less. Light, bulky goods like furniture or textiles fill the volume first — go with a 40ft or 40HC to use the space efficiently. Calculate your total CBM and weight first, then match to the container that wastes the least of both.</p>
+
       <nav class="continue-reading" aria-label="Related guides" style="margin:24px 0 4px;padding:16px 18px;background:var(--bg);border-left:3px solid var(--accent);">
         <p style="margin:0 0 6px;font-weight:600;font-size:.95rem;">Continue reading</p>
         <ul style="margin:0;padding-left:18px;line-height:1.8;font-size:.95rem;">
-          <li><a href="guide-cbm.html">CBM to choose the right size</a></li>
-          <li><a href="guide-cbm-calc.html">Loading calculator</a></li>
-          <li><a href="guide-fcl-lcl.html">FCL vs LCL decision</a></li>
+          <li><a href="guide-cbm.html">CBM vs gross weight: what decides your utilization</a></li>
+          <li><a href="guide-fcl-lcl.html">FCL vs LCL: which saves you more</a></li>
+          <li><a href="guide-how-many-cartons.html">How many cartons fit in a container</a></li>
+          <li><a href="guide-overweight-container.html">What happens when your container is overweight</a></li>
         </ul>
       </nav>
       <div class="card" style="margin-top:26px;background:var(--bg-blue);border:none;">

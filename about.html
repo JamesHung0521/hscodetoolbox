@@ -30,8 +30,19 @@
       <a href="about.html" class="active">About</a>
     </nav>
     <a class="btn btn-primary" href="hs-code-lookup.html">Get Started</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="hs-code-lookup.html">HS Code Lookup</a>
+    <a href="container-calculation.html">Container Load</a>
+    <a href="guides.html">Guides</a>
+    <a href="about.html" class="active">About</a>
+    <a class="btn btn-primary" href="hs-code-lookup.html">Get Started</a>
   </div>
 </header>
+<script>
+(function(){var b=document.querySelector('.nav-toggle'),m=document.getElementById('mobileNav');if(!b||!m)return;b.addEventListener('click',function(){var open=m.classList.toggle('open');b.setAttribute('aria-expanded',open?'true':'false');});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false');});});})();
+</script>
 
 <main>
   <section class="section">

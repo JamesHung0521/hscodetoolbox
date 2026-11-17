@@ -102,8 +102,19 @@
       <a href="about.html">About</a>
     </nav>
     <a class="btn btn-primary" href="container-calculation.html">Container Calculator</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="hs-code-lookup.html" class="active">HS Code Lookup</a>
+    <a href="container-calculation.html">Container Load</a>
+    <a href="guides.html">Guides</a>
+    <a href="about.html">About</a>
+    <a class="btn btn-primary" href="container-calculation.html">Container Calculator</a>
   </div>
 </header>
+<script>
+(function(){var b=document.querySelector('.nav-toggle'),m=document.getElementById('mobileNav');if(!b||!m)return;b.addEventListener('click',function(){var open=m.classList.toggle('open');b.setAttribute('aria-expanded',open?'true':'false');});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false');});});})();
+</script>
 
 <main>
   <section class="tool-hero">
@@ -111,11 +122,11 @@
       <div class="center" style="margin-bottom:20px;">
         <span class="eyebrow">HS Code Lookup</span>
         <h1>Find the HS code &amp; compare duty rates</h1>
-        <p class="muted" style="max-width:620px;margin:0 auto;">Search by <strong>HS code</strong> or <strong>product name</strong> (English or 中文). Compare import duty across the <strong>USA</strong>, <strong>China</strong> and <strong>EU</strong> side by side.</p>
+        <p class="muted" style="max-width:620px;margin:0 auto;">Search by <strong>HS code</strong> or <strong>product name</strong> (English or Chinese). Compare import duty across the <strong>USA</strong>, <strong>China</strong> and <strong>EU</strong> side by side.</p>
       </div>
 
       <form class="search-bar" style="max-width:720px;margin:0 auto;" onsubmit="event.preventDefault(); doSearch();">
-        <input id="q" class="input" type="text" placeholder="Enter a code (e.g. 3907, 6403) or product (PVC resin, 螺丝, shoes, 咖啡)…" aria-label="Search HS code or product">
+        <input id="q" class="input" type="text" placeholder="Enter a code (e.g. 3907, 6403) or product (PVC resin, cartons, shoes, coffee)…" aria-label="Search HS code or product">
         <button class="btn btn-primary btn-lg" type="submit">Search</button>
         <button class="btn btn-ghost btn-lg" type="button" aria-label="Clear search" onclick="clearSearch()">Clear</button>
       </form>
@@ -154,7 +165,7 @@
     <div class="wrap prose" style="max-width:780px;margin-top:36px;">
       <h2>Why the right HS code matters more than you think</h2>
       <p>A wrong HS code is one of the most common reasons a shipment gets held at the border. It changes the duty you pay, can trigger extra permits or inspections, and sometimes lands your goods in the wrong clearance lane entirely. Getting the first six digits right is global — every country that uses the Harmonized System shares them — but the US, China and the EU each extend the code with their own digits and set their own rates. That is exactly why the same product can be duty-free in one market and carry a meaningful rate in another.</p>
-      <p>Search by what your product <em>is</em>, not by what you hope it will be called. Enter a code or a product name (English or 中文), and this tool shows the matching 6-digit code with the US, China and EU rates side by side. From there, confirm the final national code against the destination tariff before you book your shipment.</p>
+      <p>Search by what your product <em>is</em>, not by what you hope it will be called. Enter a code or a product name (English or Chinese), and this tool shows the matching 6-digit code with the US, China and EU rates side by side. From there, confirm the final national code against the destination tariff before you book your shipment.</p>
 
       <h2>Frequently asked questions</h2>
       <div class="card" style="padding:18px 20px;">
@@ -312,7 +323,7 @@
 
   /* ---------- 快速入口 chips ---------- */
   (function buildChips(){
-    var pops=['3907','6403','6110','4819','4415','8518','9503','0901','纸张/Paper','鞋/Shoes'];
+    var pops=['3907','6403','6110','4819','4415','8518','9503','0901','Paper','Shoes'];
     document.getElementById('chips').innerHTML=pops.map(function(p){
       return '<span class="chip" onclick="chipGo(\''+esc(p)+'\')">'+esc(p)+'</span>';
     }).join('');

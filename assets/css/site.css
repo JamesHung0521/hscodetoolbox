@@ -79,7 +79,13 @@ h3 { font-size: 1.1rem; margin: 0 0 .5rem; }
 
 /* ---------- 顶部导航 ---------- */
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-.nav { display: flex; align-items: center; gap: 24px; height: 96px; }
+.nav { display: flex; align-items: center; gap: 24px; height: 96px; flex-wrap: nowrap; }
+.nav-toggle { display:none; margin-left:auto; background:none; border:0; font-size:1.7rem; line-height:1; color:var(--ink-900); cursor:pointer; padding:6px 4px; }
+.mobile-nav { display:none; flex-direction:column; background:#fff; border-top:1px solid var(--line); }
+.mobile-nav a { display:block; padding:13px 20px; color:var(--ink-700); font-weight:600; font-size:1rem; border-bottom:1px solid var(--line); }
+.mobile-nav a.active, .mobile-nav a:active { color:var(--blue-700); background:var(--bg-blue); }
+.mobile-nav .btn { display:block; margin:12px 20px 16px; text-align:center; }
+.mobile-nav.open { display:flex; }
 .brand { display: inline-flex; align-items: center; gap: 13px; font-weight: 800; font-size: 1.75rem; color: var(--ink-900); }
 .brand img { width: 80px; height: 80px; border-radius: 12px; }
 .brand .hl { color: var(--blue-700); }
@@ -146,10 +152,25 @@ h3 { font-size: 1.1rem; margin: 0 0 .5rem; }
 }
 @media (max-width: 720px) {
   .nav { height: 66px; }
-  .nav-links { gap:0; }
+  .nav-links, .nav > .btn { display: none; }
+  .nav-toggle { display: inline-flex; }
   .brand { font-size: 1.15rem; }
   .brand img { width: 44px; height: 44px; }
   .nav-links a { padding:6px 8px; font-size:.85rem; }
   .nav-cta .btn { padding:8px 12px; font-size:.85rem; }
   .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- 数据表窄屏横向滚动（必修5·阿呆验收） ---------- */
+@media(max-width:720px){
+  .wrap table,
+  main table{
+    display:block;
+    width:100% !important;
+    max-width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .wrap table th,
+  .wrap table td{white-space:nowrap;}
 }

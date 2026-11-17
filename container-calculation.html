@@ -103,14 +103,24 @@
   .compare-table td:first-child{text-align:left;font-weight:600;}
   .best{background:var(--green-50);}
   .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px;margin-bottom:10px;}
-  .legend .li{display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--ink-700);}
+  .legend .li,.legend .lg{display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--ink-700);}
   .legend .sw{width:14px;height:14px;border-radius:3px;display:inline-block;}
+  .ghost{background:var(--bg-soft);color:var(--blue-700);border:1px solid var(--line);border-radius:6px;cursor:pointer;}
+  .ghost:hover{background:var(--bg-blue);border-color:var(--blue-300);}
+  #svgWrap{display:flex;flex-direction:column;gap:14px;margin-top:6px;}
+  #svgWrap .view-box{flex:1 1 100%;min-width:0;}
   .views3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:6px;}
   .view-box{border:1px solid var(--line);border-radius:var(--radius);padding:12px;background:#fff;}
-  .view-box h4{margin:0 0 8px;font-size:.9rem;text-align:center;}
+  .view-box h3,.view-box h4{margin:0 0 8px;font-size:.9rem;text-align:center;}
+  .view-box-iso .view-svg{width:100%;height:auto;}
   .view-svg{width:100%;height:auto;display:block;}
   .result-empty{color:var(--ink-500);text-align:center;padding:40px;border:1px dashed var(--line);border-radius:var(--radius);}
-  @media(max-width:920px){ .tool-layout{grid-template-columns:1fr;} .panel{position:static;} }
+  .result-empty{color:var(--ink-500);text-align:center;padding:40px;border:1px dashed var(--line);border-radius:var(--radius);}
+  .grid2{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .grid3{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .grid2 .input,.grid3 .input{min-width:0;}
+  .panel{min-width:0;}
+  @media(max-width:920px){ .tool-layout{grid-template-columns:minmax(0,1fr);} .panel{position:static;} }
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -134,8 +144,19 @@
       <a href="about.html">About</a>
     </nav>
     <a class="btn btn-primary" href="hs-code-lookup.html">HS Code Lookup</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="hs-code-lookup.html">HS Code Lookup</a>
+    <a href="container-calculation.html" class="active">Container Load</a>
+    <a href="guides.html">Guides</a>
+    <a href="about.html">About</a>
+    <a class="btn btn-primary" href="hs-code-lookup.html">HS Code Lookup</a>
   </div>
 </header>
+<script>
+(function(){var b=document.querySelector('.nav-toggle'),m=document.getElementById('mobileNav');if(!b||!m)return;b.addEventListener('click',function(){var open=m.classList.toggle('open');b.setAttribute('aria-expanded',open?'true':'false');});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false');});});})();
+</script>
 
 <main>
   <section style="padding:30px 0 8px;">
@@ -177,12 +198,7 @@
 
         <!-- 右侧结果 -->
         <div>
-          <div id="resultArea">
-            <div class="result-empty">
-              <span style="font-size:1.8rem;display:block;margin-bottom:8px;">📦</span>
-              Add your packages and container type, then press <strong>Calculate Loading</strong>.
-            </div>
-          </div>
+          <div id="resultArea"></div>
         </div>
       </div>
     </div>
@@ -223,14 +239,22 @@
   </div>
 </footer>
 
-<script src="assets/js/container-engine.js"></script>
+<script src="assets/js/container-engine-v2.js"></script>
+<script src="assets/js/svg.js"></script>
+<script>
+window.E=window.ContainerEngineV2;
+window.PALETTE=['#1a76c8','#2aa06a','#ee8a4b','#165f9f','#6b7d90','#228b5c','#7d5ba6','#c86a2a'];
+window.CONTAINER_C='#0f4c8a';
+window.CM2MM=10;
+window.SHOW_ISO_LABEL=false; /* 工具站: 默认不显示逐件件号(海量件号会糊成一片); svg.js 另有 <=60 件阈值兜底 */
+</script>
 <script>
 (function(){
   'use strict';
-  var C=window.ContainerEngine;
+  var C=window.ContainerEngineV2;
   var unit='mm';
   var items=[];
-  var selectedContainer="40'";
+  var selectedContainer="40'HC";
   var autoSelectOn=false;
   var uid=1;
 
@@ -290,15 +314,18 @@
   }
 
   /* ---------- 计算 ---------- */
+  // 统一转成 v2 引擎输入。纸箱/袋/吨袋默认可叠不限层(与 v1 一致, 避免装载恶化);
+  // 托盘按用户勾选 stackable。v2 无 stackable 时视为不可叠(只放一层)。
+  function toInput(it){
+    var isPallet=(it.type==='pallet');
+    var stackable=isPallet ? !!it.stackable : true;
+    var stackLayers = isPallet ? (it.stackable ? null : 1) : null;
+    return {uid:it.uid, name:it.name, type:it.type, l:it.l, w:it.w, h:it.h, wt:it.wt,
+            quantity:Math.max(0,Math.floor(+it.quantity)||0), stackable:stackable, stackLayers:stackLayers};
+  }
   function calculate(){
     // 转成引擎输入
-    var inputs=items.map(function(it){
-      var l=+it.l, w=+it.w, h=+it.h;
-      // 托盘: 若可堆叠且指定层数, 高度乘层数(默认算一层)
-      var effH=h;
-      if(it.type==='pallet' && it.stackable){ effH=h*(it.stackLayers||1); }
-      return {uid:it.uid, name:it.name, type:it.type, l:l, w:w, h:effH, wt:it.wt, quantity:Math.max(0,Math.floor(+it.quantity)||0)};
-    }).filter(function(x){return x.quantity>0;});
+    var inputs=items.filter(function(x){return x.quantity>0;}).map(toInput);
 
     if(!inputs.length){ showResult('<div class="result-empty">Add at least one package with a quantity &gt; 0.</div>'); return; }
 
@@ -387,77 +414,25 @@
     });
     html+='</tbody></table></div>';
 
-    // 2D 三视图
+    // 2D 三视图 (svg.js 真三视图引擎)
     html+='<h2 style="margin-top:20px;">2D Loading view</h2>';
-    html+='<p class="muted" style="font-size:.85rem;max-width:720px;">Simplified top / side / front layout. Different package specs are shown in different colors. Exact final positioning depends on your loading crew — this is an estimate.</p>';
-    html+='<div class="legend">';
-    // 颜色图例
-    var pal=['#1360a6','#2aa06a','#d68a1c','#b2458f','#7a5ad8','#c05a5a','#2c9aa5','#8a9b2f'];
-    inputs2().forEach(function(it,ii){
-      var used=items.filter(function(x){return x.uid===it.uid;})[0];
-      if(used && used.quantity>0){
-        html+='<span class="li"><span class="sw" style="background:'+pal[ii%pal.length]+'"></span>'+esc(used.name)+'</span>';
-      }
-    });
-    html+='</div>';
-    var views=C.generateViews(selectedContainer, inputs2());
-    html+='<div class="views3">';
-    ['top','side','front'].forEach(function(k){
-      var v=views[k];
-      // 计算视图说明: 每层箱数 + 层数 (从 blocks.meta 汇总)
-      var perLayer=0, layers=0, m0=null;
-      v.blocks.forEach(function(b){ if(b.meta && !m0) m0=b.meta; });
-      if(m0){
-        if(k==='top'){ perLayer=m0.rows*m0.cols; layers=1; }
-        else if(k==='side'){ perLayer=m0.rows; layers=m0.layers; }
-        else { perLayer=m0.cols; layers=m0.layers; }
-      }
-      var note=(k==='top' ? '一层 '+perLayer+' 箱' : '一层 '+perLayer+' 箱 · 共 '+layers+' 层');
-      v.note=v.note||note;
-      html+='<div class="view-box"><h4>'+esc(v.label)+'</h4>'+renderSvg(v,k,pal)+'</div>';
-    });
-    html+='</div>';
+    html+='<p class="muted" style="font-size:.85rem;max-width:720px;">Real container layout rendered from the packing engine — isometric, top and side views share one coordinate set. Color = package spec (legend below), dark frame = container wall.</p>';
+    html+='<div id="legendBox" class="legend"></div>';
+    html+='<div id="svgWrap"></div>';
 
     showResult(html);
-  }
 
-  function renderSvg(v,kind,pal){
-    var w=360, h=kind==='top'?260:(kind==='side'?200:200);
-    var pad=4;
-    // 三个视图的画布: 俯视=宽×长, 侧视=长×高, 正视=宽×高 (比例用 viewBox 保持真实长宽比)
-    var svg='<svg class="view-svg" viewBox="0 -6 '+w+' '+h+'" role="img" aria-label="'+esc(v.label)+' view">';
-    svg+='<rect x="2" y="2" width="'+(w-4)+'" height="'+(h-4)+'" fill="#f6f9fc" stroke="#b9c6d4" stroke-width="1.5" stroke-dasharray="4 3"/>';
-    v.blocks.forEach(function(bk){
-      var x,y,bw,bh;
-      var m=bk.meta||{};
-      if(kind==='top'){
-        // 俯视: 柜 宽W(横)×长L(纵), 箱面 w×l
-        x=bk.x/(v.w)*(w-pad*2)+pad; y=bk.y/(v.h)*(h-pad*2)+pad;
-        bw=Math.max(4,bk.w/(v.w)*(w-pad*2)); bh=Math.max(4,bk.l/(v.h)*(h-pad*2));
-      } else if(kind==='side'){
-        // 侧视: 柜 长L(横)×高H(纵), 箱面 l×h, 从底部往上堆
-        x=bk.x/(v.w)*(w-pad*2)+pad;
-        y=(v.h- (bk.y) - bk.h)/v.h*(h-pad*2)+pad;
-        bw=Math.max(4,bk.w/(v.w)*(w-pad*2)); bh=Math.max(3,bk.h/(v.h)*(h-pad*2));
-      } else {
-        // 正视: 柜 宽W(横)×高H(纵), 箱面 w×h, 从底部往上堆
-        x=bk.x/(v.w)*(w-pad*2)+pad;
-        y=(v.h- (bk.y) - bk.h)/v.h*(h-pad*2)+pad;
-        bw=Math.max(4,bk.w/(v.w)*(w-pad*2)); bh=Math.max(3,bk.h/(v.h)*(h-pad*2));
-      }
-      svg+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+bh.toFixed(1)+'" fill="'+pal[m.color||0]+'" opacity="0.8" stroke="#164a7a" stroke-width="1"/>';
-    });
-    svg+='<text x="'+(w-4)+'" y="'+(h+10)+'" text-anchor="end" font-size="11" fill="#667">'+(v.note||'')+'</text>';
-    svg+='</svg>';
-    return svg;
+    // 在 DOM 就位后调用 svg.js 渲染真三视图（需全局 E/PALETTE/CONTAINER_C/CM2MM 已定义）
+    if(typeof window.renderSVG==='function'){
+      try{ window.renderSVG(result, selectedContainer); }
+      catch(err){ /* svg 渲染失败不应阻断结果展示 */ }
+    }
+    return;
   }
 
   // 供对比循环使用的当前 inputs (转成引擎输入)
   function inputs2(){
-    return items.map(function(it){
-      var effH=it.h;
-      return {uid:it.uid,name:it.name,type:it.type,l:it.l,w:it.w,h:effH,wt:it.wt,quantity:Math.max(0,Math.floor(+it.quantity)||0)};
-    }).filter(function(x){return x.quantity>0;});
+    return items.filter(function(x){return x.quantity>0;}).map(toInput);
   }
 
   function showResult(h){ document.getElementById('resultArea').innerHTML=h; }
@@ -473,12 +448,13 @@
     pickContainer: function(t){ selectedContainer=t; autoSelectOn=false; document.getElementById('autoSelect').checked=false; renderContainers(); },
     toggleAuto: function(){ autoSelectOn=document.getElementById('autoSelect').checked; renderContainers(); },
     calculate: calculate,
-    resetAll: function(){ items=[]; var it=newItem(); items.push(it); selectedContainer="40'"; autoSelectOn=false; document.getElementById('autoSelect').checked=false; unit='mm'; renderContainers(); renderList(); showResult('<div class="result-empty"><span style="font-size:1.8rem;display:block;margin-bottom:8px;">📦</span>Add your packages, pick a container, then calculate.</div>'); }
+    resetAll: function(){ items=[]; var it=newItem(); items.push(it); selectedContainer="40'HC"; autoSelectOn=false; document.getElementById('autoSelect').checked=false; unit='mm'; renderContainers(); renderList(); calculate(); }
   };
 
   /* ---------- 初始化 ---------- */
   items.push(newItem());
   renderContainers(); renderList();
+  calculate(); /* P0-1: 首屏用预填样例(500×400×300mm/25kg/1000箱/40'HC)自动算并直接渲染结果 */
   try{document.getElementById('year').textContent=new Date().getFullYear();}catch(e){}
 })();
 </script>

@@ -84,7 +84,7 @@ h3 { font-size: 1.1rem; margin: 0 0 .5rem; }
 .mobile-nav { display:none; flex-direction:column; background:#fff; border-top:1px solid var(--line); }
 .mobile-nav a { display:block; padding:13px 20px; color:var(--ink-700); font-weight:600; font-size:1rem; border-bottom:1px solid var(--line); }
 .mobile-nav a.active, .mobile-nav a:active { color:var(--blue-700); background:var(--bg-blue); }
-.mobile-nav .btn { display:block; margin:12px 20px 16px; text-align:center; }
+.mobile-nav .btn { display:block; margin:12px 20px 16px; text-align:center; color:#fff; border-bottom:0; }
 .mobile-nav.open { display:flex; }
 .brand { display: inline-flex; align-items: center; gap: 13px; font-weight: 800; font-size: 1.75rem; color: var(--ink-900); }
 .brand img { width: 80px; height: 80px; border-radius: 12px; }
